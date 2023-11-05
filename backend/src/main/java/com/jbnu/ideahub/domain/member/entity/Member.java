@@ -18,20 +18,26 @@ public class Member extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int studentId;
+    @Column(length = 50, nullable = false)
+    private String studentId;
 
+    @Column(length = 50, nullable = false)
     private String password;
 
+    @Column(length = 20, nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String email;
 
     private String github;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 20, nullable = false)
     private MemberStatus status;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 20, nullable = false)
     private MemberRole role;
 
     @OneToMany(mappedBy = "member")

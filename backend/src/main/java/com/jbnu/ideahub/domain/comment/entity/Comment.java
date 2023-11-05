@@ -32,6 +32,7 @@ public class Comment extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     private List<Comment> comments = new ArrayList<>();
 
+    @Lob
     @Column(nullable = false)
     private String Content;
 }

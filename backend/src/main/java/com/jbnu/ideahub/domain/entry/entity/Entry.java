@@ -25,10 +25,12 @@ public class Entry extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     @Column(nullable = false)
     private String content;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 20, nullable = false)
     private EntryStatus status;
 
     private String github;
