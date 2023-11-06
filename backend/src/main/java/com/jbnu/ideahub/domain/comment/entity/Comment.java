@@ -1,6 +1,6 @@
 package com.jbnu.ideahub.domain.comment.entity;
 
-import com.jbnu.ideahub.domain.common.BaseEntity;
+import com.jbnu.ideahub.domain.common.DatetimeMetadata;
 import com.jbnu.ideahub.domain.entry.entity.Entry;
 import com.jbnu.ideahub.domain.member.entity.Member;
 import jakarta.persistence.*;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Entity
-public class Comment extends BaseEntity {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,10 @@ public class Comment extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     private List<Comment> comments = new ArrayList<>();
 
+    @Lob
     @Column(nullable = false)
     private String Content;
+
+    @Embedded
+    private DatetimeMetadata datetimeMetadata;
 }
