@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class EntryCreateUpdateRequest {
+public class EntryRequest {
 
     private static final int MAX_TITLE_SIZE = 255;
     private static final int MAX_CONTENT_SIZE = 65535;
