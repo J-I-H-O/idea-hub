@@ -25,7 +25,7 @@ public class CommentController {
             @RequestBody @Valid final CommentCreateRequest commentCreateRequest
     ) {
         final Long commentId = commentService.save(commentCreateRequest);
-        return ResponseEntity.created(URI.create("/comment/" + commentId)).build();
+        return ResponseEntity.created(URI.create("/comments/" + commentId)).build();
     }
 
     @GetMapping("/entries/{entryId}/comments")

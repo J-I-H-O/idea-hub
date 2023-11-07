@@ -24,7 +24,7 @@ public class CategoryController {
             @RequestBody @Valid final CategoryRequest categoryRequest
     ) {
         final Long categoryId = categoryService.save(categoryRequest);
-        return ResponseEntity.created(URI.create("/category/" + categoryId)).build();
+        return ResponseEntity.created(URI.create("/categories/" + categoryId)).build();
     }
 
     @GetMapping
