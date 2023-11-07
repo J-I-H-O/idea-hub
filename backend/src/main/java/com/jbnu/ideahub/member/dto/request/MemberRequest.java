@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class MemberCreateUpdateRequest {
+public class MemberRequest {
 
     private static final int MAX_STUDENT_ID_SIZE = 50;
     private static final int MAX_PASSWORD_SIZE = 50;
