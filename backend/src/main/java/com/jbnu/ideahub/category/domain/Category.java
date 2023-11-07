@@ -1,10 +1,13 @@
 package com.jbnu.ideahub.category.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Category {
 
     @Id

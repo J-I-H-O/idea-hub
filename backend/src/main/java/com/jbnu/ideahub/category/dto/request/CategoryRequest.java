@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class CategoryCreateUpdateRequest {
+public class CategoryRequest {
 
     private static final String BLANK_ERROR_MESSAGE = "카테고리 이름은 공백일 수 없습니다.";
     private static final String LENGTH_ERROR_MESSAGE = "카테고리 이름은 50자를 초과할 수 없습니다.";
