@@ -3,12 +3,14 @@ package com.jbnu.ideahub.category.service;
 import com.jbnu.ideahub.category.domain.Category;
 import com.jbnu.ideahub.category.dto.request.CategoryRequest;
 import com.jbnu.ideahub.category.dto.response.CategoryResponse;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class CategoryService {
     // TODO: 구현
     public Long save(CategoryRequest categoryRequest) {
