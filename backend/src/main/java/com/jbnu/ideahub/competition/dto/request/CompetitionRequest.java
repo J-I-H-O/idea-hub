@@ -5,11 +5,14 @@ import com.jbnu.ideahub.competition.domain.CompetitionStatus;
 import com.jbnu.ideahub.competition.domain.RegistrationDatetime;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class CompetitionRequest {
 
     private static final int MAX_TITLE_SIZE = 255;
@@ -26,20 +29,20 @@ public class CompetitionRequest {
 
     @NotBlank(message = TITLE_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_TITLE_SIZE, message = TITLE_LENGTH_ERROR_MESSAGE)
-    private final String title;
+    private String title;
 
     @NotBlank(message = CONTENT_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_CONTENT_SIZE, message = CONTENT_LENGTH_ERROR_MESSAGE)
-    private final String content;
+    private String content;
 
     @NotBlank(message = STATUS_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_STATUS_SIZE, message = STATUS_LENGTH_ERROR_MESSAGE)
-    private final CompetitionStatus status;
+    private CompetitionStatus status;
 
     @Size(max = MAX_PLACE_SIZE, message = PLACE_LENGTH_ERROR_MESSAGE)
-    private final String place;
+    private  String place;
 
-    private final RegistrationDatetime registrationDatetime;
+    private RegistrationDatetime registrationDatetime;
 
-    private final CompetitionDatetime competitionDatetime;
+    private CompetitionDatetime competitionDatetime;
 }

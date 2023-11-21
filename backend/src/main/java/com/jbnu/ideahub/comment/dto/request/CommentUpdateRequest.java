@@ -2,11 +2,14 @@ package com.jbnu.ideahub.comment.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentUpdateRequest {
 
     private static final int MAX_TEXT_SIZE = 65535;
@@ -15,5 +18,5 @@ public class CommentUpdateRequest {
 
     @NotBlank(message = BLANK_ERROR_MESSAGE)
     @Size(max = MAX_TEXT_SIZE, message = LENGTH_ERROR_MESSAGE)
-    private final String content;
+    private String content;
 }

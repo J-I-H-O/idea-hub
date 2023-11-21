@@ -4,11 +4,14 @@ import com.jbnu.ideahub.member.domain.MemberRole;
 import com.jbnu.ideahub.member.domain.MemberStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberRequest {
 
     private static final int MAX_STUDENT_ID_SIZE = 50;
@@ -30,28 +33,28 @@ public class MemberRequest {
 
     @NotBlank(message = STUDENT_ID_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_STUDENT_ID_SIZE, message = STUDENT_ID_LENGTH_ERROR_MESSAGE)
-    private final String studentId;
+    private String studentId;
 
     // TODO: 비밀번호 검증 (@Pattern)
     @NotBlank(message = PASSWORD_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_PASSWORD_SIZE, message = PASSWORD_LENGTH_ERROR_MESSAGE)
-    private final String password;
+    private String password;
 
     @NotBlank(message = NAME_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_NAME_SIZE, message = NAME_LENGTH_ERROR_MESSAGE)
-    private final String name;
+    private String name;
 
     // TODO: 이메일 검증 (@Pattern)
     @NotBlank(message = EMAIL_BLANK_ERROR_MESSAGE)
-    private final String email;
+    private String email;
 
-    private final String github;
+    private String github;
 
     @NotBlank(message = STATUS_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_STATUS_SIZE, message = STATUS_LENGTH_ERROR_MESSAGE)
-    private final MemberStatus status;
+    private MemberStatus status;
 
     @NotBlank(message = ROLE_BLANK_ERROR_MESSAGE)
     @Size(max = MAX_ROLE_SIZE, message = ROLE_LENGTH_ERROR_MESSAGE)
-    private final MemberRole role;
+    private MemberRole role;
 }
