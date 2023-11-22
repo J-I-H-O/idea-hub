@@ -1,25 +1,30 @@
 package com.jbnu.ideahub.competition.dto;
 
-import com.jbnu.ideahub.competition.domain.RegistrationDatetime;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class RegistrationDatetimeDto {
 
-    private final LocalDateTime registerStartDatetime;
-    private final LocalDateTime registerEndDatetime;
+    private String start;
+    private String end;
 
     public static RegistrationDatetimeDto createdRegistrationDatetime(
-            RegistrationDatetime registrationDatetime
+            LocalDateTime registerStartDatetime,
+            LocalDateTime registerEndDatetime
     ) {
         return new RegistrationDatetimeDto(
-                registrationDatetime.getRegisterStartDatetime(),
-                registrationDatetime.getRegisterEndDatetime()
+                formatDateTime(registerStartDatetime),
+                formatDateTime(registerEndDatetime)
         );
+    }
+
+    private static String formatDateTime(LocalDateTime dateTime) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return dateTimeFormatter.format(dateTime);
     }
 }

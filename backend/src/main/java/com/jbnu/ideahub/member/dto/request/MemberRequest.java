@@ -3,6 +3,7 @@ package com.jbnu.ideahub.member.dto.request;
 import com.jbnu.ideahub.member.domain.MemberRole;
 import com.jbnu.ideahub.member.domain.MemberStatus;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +27,9 @@ public class MemberRequest {
     private static final String NAME_BLANK_ERROR_MESSAGE = "이름은 공백일 수 없습니다.";
     private static final String NAME_LENGTH_ERROR_MESSAGE = "이름은 " + MAX_NAME_SIZE + "자를 넘을 수 없습니다.";
     private static final String EMAIL_BLANK_ERROR_MESSAGE = "이메일은 공백일 수 없습니다.";
-    private static final String STATUS_BLANK_ERROR_MESSAGE = "회원 상태는 공백일 수 없습니다.";
+    private static final String STATUS_NULL_ERROR_MESSAGE = "회원 상태는 NULL일 수 없습니다.";
     private static final String STATUS_LENGTH_ERROR_MESSAGE = "회원 상태는 " + MAX_STATUS_SIZE + "자를 넘을 수 없습니다.";
-    private static final String ROLE_BLANK_ERROR_MESSAGE = "회원 권한은 공백일 수 없습니다.";
+    private static final String ROLE_NULL_ERROR_MESSAGE = "회원 권한은 NULL일 수 없습니다.";
     private static final String ROLE_LENGTH_ERROR_MESSAGE = "회원 권한은 " + MAX_ROLE_SIZE + "자를 넘을 수 없습니다.";
 
     @NotBlank(message = STUDENT_ID_BLANK_ERROR_MESSAGE)
@@ -50,11 +51,9 @@ public class MemberRequest {
 
     private String github;
 
-    @NotBlank(message = STATUS_BLANK_ERROR_MESSAGE)
-    @Size(max = MAX_STATUS_SIZE, message = STATUS_LENGTH_ERROR_MESSAGE)
+    @NotNull(message = STATUS_NULL_ERROR_MESSAGE)
     private MemberStatus status;
 
-    @NotBlank(message = ROLE_BLANK_ERROR_MESSAGE)
-    @Size(max = MAX_ROLE_SIZE, message = ROLE_LENGTH_ERROR_MESSAGE)
+    @NotNull(message = ROLE_NULL_ERROR_MESSAGE)
     private MemberRole role;
 }

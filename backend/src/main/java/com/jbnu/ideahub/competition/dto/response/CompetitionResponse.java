@@ -6,11 +6,13 @@ import com.jbnu.ideahub.competition.domain.CompetitionStatus;
 import com.jbnu.ideahub.competition.dto.CompetitionDatetimeDto;
 import com.jbnu.ideahub.competition.dto.RegistrationDatetimeDto;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class CompetitionResponse {
 
     private final Long id;
@@ -22,14 +24,20 @@ public class CompetitionResponse {
     private final String place;
     private final RegistrationDatetimeDto registrationDatetime;
     private final CompetitionDatetimeDto competitionDatetime;
-    private final DatetimeMetadataDto datetimeMetadataDto;
+    private final DatetimeMetadataDto datetimeMetadata;
 
     public static CompetitionResponse of(final Competition competition) {
         RegistrationDatetimeDto registrationDatetime = RegistrationDatetimeDto
-                .createdRegistrationDatetime(competition.getRegistrationDatetime());
+                .createdRegistrationDatetime(
+                        competition.getRegistrationDatetime().getRegisterStartDatetime(),
+                        competition.getRegistrationDatetime().getRegisterEndDatetime()
+                );
 
         CompetitionDatetimeDto competitionDatetime = CompetitionDatetimeDto
-                .createdRegistrationDatetime(competition.getCompetitionDatetime());
+                .createdRegistrationDatetime(
+                        competition.getCompetitionDatetime().getCompetitionStartDatetime(),
+                        competition.getCompetitionDatetime().getCompetitionEndDatetime()
+                );
 
         DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(
                 competition.getDatetimeMetadata().getCreatedAt(),
