@@ -19,12 +19,12 @@ public class EntryResponse {
     private final EntryStatus status;
     private final String github;
     private final PrizeDto prize;
-    private final DatetimeMetadataDto datetimeMetadata;
+    private final DatetimeMetadataDto datetimeMetadataDto;
 
     public static EntryResponse of(final Entry entry) {
         PrizeDto prizeDto = PrizeDto.of(entry.getPrize());
 
-        DatetimeMetadataDto datetimeMetadata = DatetimeMetadataDto.createDatetimeMetadataResponse(
+        DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(
                 entry.getDatetimeMetadata().getCreatedAt(),
                 entry.getDatetimeMetadata().getUpdatedAt()
         );
@@ -37,7 +37,7 @@ public class EntryResponse {
                 entry.getStatus(),
                 entry.getGithub(),
                 prizeDto,
-                datetimeMetadata
+                datetimeMetadataDto
         );
     }
 }

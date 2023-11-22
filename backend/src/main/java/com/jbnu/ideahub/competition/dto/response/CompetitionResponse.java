@@ -31,7 +31,7 @@ public class CompetitionResponse {
         CompetitionDatetimeDto competitionDatetime = CompetitionDatetimeDto
                 .createdRegistrationDatetime(competition.getCompetitionDatetime());
 
-        DatetimeMetadataDto datetimeMetadata = DatetimeMetadataDto.createDatetimeMetadataResponse(
+        DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(
                 competition.getDatetimeMetadata().getCreatedAt(),
                 competition.getDatetimeMetadata().getUpdatedAt()
         );
@@ -46,7 +46,7 @@ public class CompetitionResponse {
                 competition.getPlace(),
                 registrationDatetime,
                 competitionDatetime,
-                datetimeMetadata
+                datetimeMetadataDto
         );
     }
 }

@@ -4,7 +4,10 @@ import com.jbnu.ideahub.common.domain.DatetimeMetadata;
 import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.member.domain.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

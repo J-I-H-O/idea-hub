@@ -44,3 +44,41 @@ include::{snippets}/categories/delete-category/http-request.adoc[]
 include::{snippets}/categories/delete-category/path-parameters.adoc[]
 ==== Response
 include::{snippets}/categories/delete-category/http-response.adoc[]
+
+== Comments
+
+=== 댓글 등록
+==== Request
+include::{snippets}/comments/create-comment/http-request.adoc[]
+==== Request-Fields
+include::{snippets}/comments/create-comment/request-fields.adoc[]
+==== Response
+include::{snippets}/comments/create-comment/http-response.adoc[]
+
+=== 댓글 조회
+==== Request
+include::{snippets}/comments/get-comments/http-request.adoc[]
+==== Request-Path Parameters
+include::{snippets}/comments/get-comments/path-parameters.adoc[]
+==== Response
+include::{snippets}/comments/get-comments/http-response.adoc[]
+==== Response-Fields
+include::{snippets}/comments/get-comments/response-fields.adoc[]
+
+=== 댓글 수정
+==== Request
+include::{snippets}/comments/update-comment/http-request.adoc[]
+==== Request-Path Parameters
+include::{snippets}/comments/update-comment/path-parameters.adoc[]
+==== Request-Fields
+include::{snippets}/comments/update-comment/request-fields.adoc[]
+==== Response
+include::{snippets}/comments/update-comment/http-response.adoc[]
+
+=== 댓글 삭제
+==== Request
+include::{snippets}/comments/delete-comment/http-request.adoc[]
+==== Request-Path Parameters
+include::{snippets}/comments/delete-comment/path-parameters.adoc[]
+==== Response
+include::{snippets}/comments/delete-comment/http-response.adoc[]

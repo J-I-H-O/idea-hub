@@ -4,8 +4,6 @@ import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.member.domain.Member;
 import com.jbnu.ideahub.member.domain.MemberRole;
 import com.jbnu.ideahub.member.domain.MemberStatus;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +19,10 @@ public class MemberResponse {
     private final String github;
     private final MemberStatus status;
     private final MemberRole role;
-    private final DatetimeMetadataDto datetimeMetadata;
+    private final DatetimeMetadataDto datetimeMetadataDto;
 
     public static MemberResponse of(final Member member) {
-        DatetimeMetadataDto datetimeMetadata = DatetimeMetadataDto.createDatetimeMetadataResponse(
+        DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(
                 member.getDatetimeMetadata().getCreatedAt(),
                 member.getDatetimeMetadata().getUpdatedAt()
         );
@@ -37,7 +35,7 @@ public class MemberResponse {
                 member.getGithub(),
                 member.getStatus(),
                 member.getRole(),
-                datetimeMetadata
+                datetimeMetadataDto
         );
     }
 }
