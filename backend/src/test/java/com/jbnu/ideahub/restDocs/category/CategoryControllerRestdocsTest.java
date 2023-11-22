@@ -132,4 +132,21 @@ class CategoryControllerRestdocsTest {
                         )
                 ));
     }
+
+    @Test
+    @DisplayName("카테고리 삭제 API")
+    void deleteCategory() throws Exception {
+        // when
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.delete("/categories/{categoryId}", 1L));
+
+        // then
+        result.andExpect(status().isNoContent())
+                .andDo(document("categories/delete-category",
+                        getDocumentRequest(),
+                        getDocumentResponse(),
+                        pathParameters(
+                                parameterWithName("categoryId").description("삭제할 카테고리의 id")
+                        )
+                ));
+    }
 }

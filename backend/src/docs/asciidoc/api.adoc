@@ -12,37 +12,35 @@ endif::[]
 == Categories
 
 === 카테고리 등록
-
 ==== Request
 include::{snippets}/categories/create-category/http-request.adoc[]
-
 ==== Request-Fields
 include::{snippets}/categories/create-category/request-fields.adoc[]
-
 ==== Response
 include::{snippets}/categories/create-category/http-response.adoc[]
 
 === 카테고리 목록 조회
-
 ==== Request
 include::{snippets}/categories/get-categories/http-request.adoc[]
-
 ==== Response
 include::{snippets}/categories/get-categories/http-response.adoc[]
-
 ==== Response-Fields
 include::{snippets}/categories/get-categories/response-fields.adoc[]
 
 === 카테고리 수정
-
 ==== Request
 include::{snippets}/categories/update-category/http-request.adoc[]
-
 ==== Request-Path Parameters
 include::{snippets}/categories/update-category/path-parameters.adoc[]
-
 ==== Request-Fields
 include::{snippets}/categories/update-category/request-fields.adoc[]
-
 ==== Response
 include::{snippets}/categories/update-category/http-response.adoc[]
+
+=== 카테고리 삭제
+==== Request
+include::{snippets}/categories/delete-category/http-request.adoc[]
+==== Request-Path Parameters
+include::{snippets}/categories/delete-category/path-parameters.adoc[]
+==== Response
+include::{snippets}/categories/delete-category/http-response.adoc[]
