@@ -33,7 +33,7 @@ public class CategoryController {
         return ResponseEntity.ok().body(new ApiResponse<>(categoryResponses));
     }
 
-    @PutMapping
+    @PutMapping("/{categoryId}")
     public ResponseEntity<Void> updateCategory(
             @PathVariable final Long categoryId,
             @RequestBody @Valid final CategoryRequest categoryRequest

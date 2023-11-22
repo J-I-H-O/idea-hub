@@ -32,3 +32,17 @@ include::{snippets}/categories/get-categories/http-response.adoc[]
 
 ==== Response-Fields
 include::{snippets}/categories/get-categories/response-fields.adoc[]
+
+=== 카테고리 수정
+
+==== Request
+include::{snippets}/categories/update-category/http-request.adoc[]
+
+==== Request-Path Parameters
+include::{snippets}/categories/update-category/path-parameters.adoc[]
+
+==== Request-Fields
+include::{snippets}/categories/update-category/request-fields.adoc[]
+
+==== Response
+include::{snippets}/categories/update-category/http-response.adoc[]

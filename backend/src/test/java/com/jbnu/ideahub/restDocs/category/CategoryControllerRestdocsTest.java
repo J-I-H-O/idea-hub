@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -32,8 +33,9 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(RestDocumentationExtension.class)
@@ -58,14 +60,18 @@ class CategoryControllerRestdocsTest {
     @Test
     @DisplayName("카테고리 등록 API")
     void createCategory() throws Exception {
+        // given
         CategoryRequest request = new CategoryRequest("카테고리1");
         String jsonRequest = objectMapper.writeValueAsString(request);
 
-        mockMvc.perform(post("/categories")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(jsonRequest))
-                .andExpect(status().isCreated())
+        // when
+        ResultActions result = mockMvc.perform(post("/categories")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .content(jsonRequest));
+
+        // then
+        result.andExpect(status().isCreated())
                 .andDo(document("categories/create-category",
                         getDocumentRequest(),
                         getDocumentResponse(),
@@ -78,20 +84,51 @@ class CategoryControllerRestdocsTest {
     @Test
     @DisplayName("카테고리 목록 조회 API")
     void getCategories() throws Exception {
+        // given
         given(categoryService.findAll())
                 .willReturn(List.of(
                         CategoryResponse.of(new Category(1L, "카테고리1")),
                         CategoryResponse.of(new Category(2L, "카테고리2")))
                 );
 
-        mockMvc.perform(get("/categories"))
-                .andExpect(status().isOk())
+        // when
+        ResultActions result = mockMvc.perform(get("/categories"));
+
+        // then
+        result.andExpect(status().isOk())
                 .andDo(document("categories/get-categories",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         responseFields(
                                 fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("카테고리 id"),
                                 fieldWithPath("data[].name").type(JsonFieldType.STRING).description("카테고리 이름")
+                        )
+                ));
+    }
+
+    @Test
+    @DisplayName("카테고리 수정 API")
+    void updateCategory() throws Exception {
+        // given
+        CategoryRequest request = new CategoryRequest("카테고리2");
+        String jsonRequest = objectMapper.writeValueAsString(request);
+
+        // when
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.put("/categories/{categoryId}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(jsonRequest));
+
+        // then
+        result.andExpect(status().isNoContent())
+                .andDo(document("categories/update-category",
+                        getDocumentRequest(),
+                        getDocumentResponse(),
+                        pathParameters(
+                                parameterWithName("categoryId").description("수정할 카테고리의 id")
+                        ),
+                        requestFields(
+                                fieldWithPath("name").type(JsonFieldType.STRING).description("새로운 카테고리 이름")
                         )
                 ));
     }
