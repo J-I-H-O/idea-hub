@@ -1,6 +1,5 @@
 package com.jbnu.ideahub.restDocs.competition;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.competition.domain.CompetitionStatus;
 import com.jbnu.ideahub.competition.dto.CompetitionDatetimeDto;
@@ -9,23 +8,15 @@ import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.presentation.CompetitionController;
 import com.jbnu.ideahub.competition.service.CompetitionService;
-import com.jbnu.ideahub.restDocs.common.ControllerRestdocsTest;
-import org.junit.jupiter.api.BeforeEach;
+import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationContextProvider;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,7 +26,6 @@ import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRespon
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
@@ -44,7 +34,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CompetitionController.class)
-public class CompetitionControllerRestdocsTest extends ControllerRestdocsTest {
+public class CompetitionControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
     private CompetitionService competitionService;
@@ -99,7 +89,7 @@ public class CompetitionControllerRestdocsTest extends ControllerRestdocsTest {
     }
 
     @Test
-    @DisplayName("대회 전체 목록 조회 API")
+    @DisplayName("전체 대회 목록 조회 API")
     void getCompetitions() throws Exception {
         // given
         RegistrationDatetimeDto registrationDatetimeDto = RegistrationDatetimeDto.createdRegistrationDatetime(
@@ -295,7 +285,8 @@ public class CompetitionControllerRestdocsTest extends ControllerRestdocsTest {
     @DisplayName("대회 삭제 API")
     void deleteCompetition() throws Exception {
         // when
-        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.delete("/competitions/{competitionId}", 1L));
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
+                .delete("/competitions/{competitionId}", 1L));
 
         // then
         result.andExpect(status().isNoContent())

@@ -13,7 +13,7 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 
 @ExtendWith(RestDocumentationExtension.class)
-public class ControllerRestdocsTest {
+public class RestdocsTestController {
 
     @Autowired
     protected MockMvc mockMvc;

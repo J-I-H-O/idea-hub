@@ -5,11 +5,13 @@ import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.entry.domain.EntryStatus;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class EntryResponse {
 
     private final Long id;
@@ -19,7 +21,7 @@ public class EntryResponse {
     private final EntryStatus status;
     private final String github;
     private final PrizeDto prize;
-    private final DatetimeMetadataDto datetimeMetadataDto;
+    private final DatetimeMetadataDto datetimeMetadata;
 
     public static EntryResponse of(final Entry entry) {
         PrizeDto prizeDto = PrizeDto.of(entry.getPrize());

@@ -5,7 +5,7 @@ import com.jbnu.ideahub.category.dto.request.CategoryRequest;
 import com.jbnu.ideahub.category.dto.response.CategoryResponse;
 import com.jbnu.ideahub.category.presentation.CategoryController;
 import com.jbnu.ideahub.category.service.CategoryService;
-import com.jbnu.ideahub.restDocs.common.ControllerRestdocsTest;
+import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CategoryController.class)
-class CategoryControllerRestdocsTest extends ControllerRestdocsTest {
+class CategoryControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
     private CategoryService categoryService;

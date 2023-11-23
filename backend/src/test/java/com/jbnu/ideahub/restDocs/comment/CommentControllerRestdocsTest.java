@@ -6,7 +6,7 @@ import com.jbnu.ideahub.comment.dto.response.CommentResponse;
 import com.jbnu.ideahub.comment.presentation.CommentController;
 import com.jbnu.ideahub.comment.service.CommentService;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
-import com.jbnu.ideahub.restDocs.common.ControllerRestdocsTest;
+import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -24,7 +24,6 @@ import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRespon
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
@@ -33,7 +32,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CommentController.class)
-public class CommentControllerRestdocsTest extends ControllerRestdocsTest {
+public class CommentControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
     private CommentService commentService;
