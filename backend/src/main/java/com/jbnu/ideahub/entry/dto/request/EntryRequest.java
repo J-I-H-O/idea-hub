@@ -1,18 +1,17 @@
 package com.jbnu.ideahub.entry.dto.request;
 
 import com.jbnu.ideahub.competition.domain.CompetitionStatus;
+import com.jbnu.ideahub.entry.domain.EntryStatus;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class EntryRequest {
 
     private static final int MAX_TITLE_SIZE = 255;
@@ -38,7 +37,7 @@ public class EntryRequest {
     private String content;
 
     @NotNull(message = STATUS_NULL_ERROR_MESSAGE)
-    private CompetitionStatus status;
+    private EntryStatus status;
 
     @Size(max = MAX_GITHUB_SIZE, message = GITHUB_LENGTH_ERROR_MESSAGE)
     private String github;

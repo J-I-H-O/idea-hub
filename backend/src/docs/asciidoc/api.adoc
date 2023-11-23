@@ -128,3 +128,14 @@ include::{snippets}/competitions/delete-competition/http-request.adoc[]
 include::{snippets}/competitions/delete-competition/path-parameters.adoc[]
 ==== Response
 include::{snippets}/competitions/delete-competition/http-response.adoc[]
+
+== Entries
+
+=== 작품 등록
+==== Request
+include::{snippets}/entries/create-entry/http-request.adoc[]
+==== Request-Fields
+include::{snippets}/entries/create-entry/request-fields.adoc[]
+==== Response
+include::{snippets}/entries/create-entry/http-response.adoc[]
+

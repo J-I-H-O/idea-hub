@@ -1,28 +1,20 @@
 package com.jbnu.ideahub.restDocs.comment;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
 import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;
 import com.jbnu.ideahub.comment.dto.response.CommentResponse;
 import com.jbnu.ideahub.comment.presentation.CommentController;
 import com.jbnu.ideahub.comment.service.CommentService;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
-import org.junit.jupiter.api.BeforeEach;
+import com.jbnu.ideahub.restDocs.common.ControllerRestdocsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationContextProvider;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -40,24 +32,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(RestDocumentationExtension.class)
 @WebMvcTest(CommentController.class)
-public class CommentControllerRestdocsTest {
-
-    @Autowired
-    private MockMvc mockMvc;
+public class CommentControllerRestdocsTest extends ControllerRestdocsTest {
 
     @MockBean
     private CommentService commentService;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    @BeforeEach
-    void setup(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(documentationConfiguration(restDocumentation))
-                .build();
-    }
 
     @Test
     @DisplayName("댓글 등록 API")

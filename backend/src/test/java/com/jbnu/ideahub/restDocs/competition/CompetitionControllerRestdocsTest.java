@@ -9,6 +9,7 @@ import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.presentation.CompetitionController;
 import com.jbnu.ideahub.competition.service.CompetitionService;
+import com.jbnu.ideahub.restDocs.common.ControllerRestdocsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,24 +43,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(RestDocumentationExtension.class)
 @WebMvcTest(CompetitionController.class)
-public class CompetitionControllerRestdocsTest {
-
-    @Autowired
-    private MockMvc mockMvc;
+public class CompetitionControllerRestdocsTest extends ControllerRestdocsTest {
 
     @MockBean
     private CompetitionService competitionService;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    @BeforeEach
-    void setup(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(documentationConfiguration(restDocumentation))
-                .build();
-    }
 
     @Test
     @DisplayName("대회 등록 API")
