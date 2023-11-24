@@ -110,6 +110,7 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].entryId").type(JsonFieldType.NUMBER).description("댓글이 작성된 작품의 id"),
                                 fieldWithPath("data[].parentId").type(JsonFieldType.NUMBER).optional().description("부모 댓글의 id. 부모 댓글이 없는 경우 null"),
                                 fieldWithPath("data[].content").type(JsonFieldType.STRING).description("댓글 내용"),
+                                fieldWithPath("data[].datetimeMetadata").description("등록 및 수정 시각 정보"),
                                 fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("댓글 작성 시각"),
                                 fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("댓글 최종 수정 시각")
                         )

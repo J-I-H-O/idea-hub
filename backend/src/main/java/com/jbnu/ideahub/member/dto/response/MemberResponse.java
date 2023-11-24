@@ -5,11 +5,13 @@ import com.jbnu.ideahub.member.domain.Member;
 import com.jbnu.ideahub.member.domain.MemberRole;
 import com.jbnu.ideahub.member.domain.MemberStatus;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class MemberResponse {
 
     private final Long id;
@@ -19,7 +21,7 @@ public class MemberResponse {
     private final String github;
     private final MemberStatus status;
     private final MemberRole role;
-    private final DatetimeMetadataDto datetimeMetadataDto;
+    private final DatetimeMetadataDto datetimeMetadata;
 
     public static MemberResponse of(final Member member) {
         DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(

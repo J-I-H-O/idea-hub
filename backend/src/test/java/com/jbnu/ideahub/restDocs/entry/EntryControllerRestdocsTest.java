@@ -135,6 +135,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("data[].prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
                                 fieldWithPath("data[].prize.prizePriority").type(JsonFieldType.NUMBER).optional().description("수상한 상의 우선순위. 상격이 높을수록 낮은 숫자를 가짐"),
+                                fieldWithPath("data[].datetimeMetadata").description("등록 및 수정 시각 정보"),
                                 fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("작품 최초 등록 시각"),
                                 fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("작품 최종 수정 시각")
                         )
@@ -187,6 +188,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data.prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("data.prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
                                 fieldWithPath("data.prize.prizePriority").type(JsonFieldType.NUMBER).optional().description("수상한 상의 우선순위. 상격이 높을수록 낮은 숫자를 가짐"),
+                                fieldWithPath("data.datetimeMetadata").description("등록 및 수정 시각 정보"),
                                 fieldWithPath("data.datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("작품 최초 등록 시각"),
                                 fieldWithPath("data.datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("작품 최종 수정 시각")
                         )
