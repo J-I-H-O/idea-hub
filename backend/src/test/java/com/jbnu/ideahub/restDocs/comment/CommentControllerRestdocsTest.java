@@ -21,13 +21,13 @@ import java.util.List;
 
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -111,8 +111,8 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].parentId").type(JsonFieldType.NUMBER).optional().description("부모 댓글의 id. 부모 댓글이 없는 경우 null"),
                                 fieldWithPath("data[].content").type(JsonFieldType.STRING).description("댓글 내용"),
                                 fieldWithPath("data[].datetimeMetadata").description("등록 및 수정 시각 정보"),
-                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("댓글 작성 시각"),
-                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("댓글 최종 수정 시각")
+                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("댓글 작성 시각"),
+                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("댓글 최종 수정 시각")
                         )
                 ));
     }

@@ -22,6 +22,7 @@ import java.util.List;
 
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.getDatetimeFormat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -131,8 +132,8 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].status").type(JsonFieldType.STRING).description("회원 활성화 여부"),
                                 fieldWithPath("data[].role").type(JsonFieldType.STRING).description("회원 권한"),
                                 fieldWithPath("data[].datetimeMetadata").description("등록 및 수정 시각 정보"),
-                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("회원 최초 등록 시각"),
-                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("회원 최종 수정 시각")
+                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("회원 최초 등록 시각"),
+                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("회원 최종 수정 시각")
                         )
                 ));
     }
@@ -182,8 +183,8 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data.status").type(JsonFieldType.STRING).description("회원 활성화 여부"),
                                 fieldWithPath("data.role").type(JsonFieldType.STRING).description("회원 권한"),
                                 fieldWithPath("data.datetimeMetadata").description("등록 및 수정 시각 정보"),
-                                fieldWithPath("data.datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("회원 최초 등록 시각"),
-                                fieldWithPath("data.datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("회원 최종 수정 시각")
+                                fieldWithPath("data.datetimeMetadata.createdAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("회원 최초 등록 시각"),
+                                fieldWithPath("data.datetimeMetadata.updatedAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("회원 최종 수정 시각")
                         )
                 ));
     }

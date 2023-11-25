@@ -23,6 +23,7 @@ import java.util.List;
 
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
 import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.getDatetimeFormat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -81,11 +82,11 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("status").type(JsonFieldType.STRING).description("대회 진행 상태"),
                                 fieldWithPath("place").type(JsonFieldType.STRING).description("대회 진행 장소"),
                                 fieldWithPath("registrationDatetime").description("대회 참가 신청 시작 및 마감 시각 정보"),
-                                fieldWithPath("registrationDatetime.start").type(JsonFieldType.STRING).description("대회 참가 신청 시작 시각"),
-                                fieldWithPath("registrationDatetime.end").type(JsonFieldType.STRING).description("대회 참가 신청 마감 시각"),
+                                fieldWithPath("registrationDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 시작 시각"),
+                                fieldWithPath("registrationDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 마감 시각"),
                                 fieldWithPath("competitionDatetime").description("대회 시작 및 종료 시각 정보"),
-                                fieldWithPath("competitionDatetime.start").type(JsonFieldType.STRING).description("대회 시작 시각"),
-                                fieldWithPath("competitionDatetime.end").type(JsonFieldType.STRING).description("대회 종료 시각")
+                                fieldWithPath("competitionDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 시작 시각"),
+                                fieldWithPath("competitionDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 종료 시각")
                         )
                 ));
     }
@@ -157,14 +158,14 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].status").type(JsonFieldType.STRING).description("대회 진행 상태"),
                                 fieldWithPath("data[].place").type(JsonFieldType.STRING).description("대회 진행 장소"),
                                 fieldWithPath("data[].registrationDatetime").description("대회 참가 신청 시작 및 마감 시각 정보"),
-                                fieldWithPath("data[].registrationDatetime.start").type(JsonFieldType.STRING).description("대회 참가 신청 시작 시각"),
-                                fieldWithPath("data[].registrationDatetime.end").type(JsonFieldType.STRING).description("대회 참가 신청 마감 시각"),
+                                fieldWithPath("data[].registrationDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 시작 시각"),
+                                fieldWithPath("data[].registrationDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 마감 시각"),
                                 fieldWithPath("data[].competitionDatetime").description("대회 시작 및 종료 시각 정보"),
-                                fieldWithPath("data[].competitionDatetime.start").type(JsonFieldType.STRING).description("대회 시작 시각"),
-                                fieldWithPath("data[].competitionDatetime.end").type(JsonFieldType.STRING).description("대회 종료 시각"),
+                                fieldWithPath("data[].competitionDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 시작 시각"),
+                                fieldWithPath("data[].competitionDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 종료 시각"),
                                 fieldWithPath("data[].datetimeMetadata").description("등록 및 수정 시각 정보"),
-                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("대회 최초 등록 시각"),
-                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("대회 최종 수정 시각")
+                                fieldWithPath("data[].datetimeMetadata.createdAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 최초 등록 시각"),
+                                fieldWithPath("data[].datetimeMetadata.updatedAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 최종 수정 시각")
                         )
                 ));
     }
@@ -226,14 +227,14 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data.status").type(JsonFieldType.STRING).description("대회 진행 상태"),
                                 fieldWithPath("data.place").type(JsonFieldType.STRING).description("대회 진행 장소"),
                                 fieldWithPath("data.registrationDatetime").description("대회 참가 신청 시작 및 마감 시각 정보"),
-                                fieldWithPath("data.registrationDatetime.start").type(JsonFieldType.STRING).description("대회 참가 신청 시작 시각"),
-                                fieldWithPath("data.registrationDatetime.end").type(JsonFieldType.STRING).description("대회 참가 신청 마감 시각"),
+                                fieldWithPath("data.registrationDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 시작 시각"),
+                                fieldWithPath("data.registrationDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 마감 시각"),
                                 fieldWithPath("data.competitionDatetime").description("대회 시작 및 종료 시각 정보"),
-                                fieldWithPath("data.competitionDatetime.start").type(JsonFieldType.STRING).description("대회 시작 시각"),
-                                fieldWithPath("data.competitionDatetime.end").type(JsonFieldType.STRING).description("대회 종료 시각"),
+                                fieldWithPath("data.competitionDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 시작 시각"),
+                                fieldWithPath("data.competitionDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 종료 시각"),
                                 fieldWithPath("data.datetimeMetadata").description("등록 및 수정 시각 정보"),
-                                fieldWithPath("data.datetimeMetadata.createdAt").type(JsonFieldType.STRING).description("대회 최초 등록 시각"),
-                                fieldWithPath("data.datetimeMetadata.updatedAt").type(JsonFieldType.STRING).description("대회 최종 수정 시각")
+                                fieldWithPath("data.datetimeMetadata.createdAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 최초 등록 시각"),
+                                fieldWithPath("data.datetimeMetadata.updatedAt").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 최종 수정 시각")
                         )
                 ));
     }
@@ -284,11 +285,11 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("status").type(JsonFieldType.STRING).description("대회 진행 상태"),
                                 fieldWithPath("place").type(JsonFieldType.STRING).description("대회 진행 장소"),
                                 fieldWithPath("registrationDatetime").description("대회 참가 신청 시작 및 마감 시각 정보"),
-                                fieldWithPath("registrationDatetime.start").type(JsonFieldType.STRING).description("대회 참가 신청 시작 시각"),
-                                fieldWithPath("registrationDatetime.end").type(JsonFieldType.STRING).description("대회 참가 신청 마감 시각"),
+                                fieldWithPath("registrationDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 시작 시각"),
+                                fieldWithPath("registrationDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 참가 신청 마감 시각"),
                                 fieldWithPath("competitionDatetime").description("대회 시작 및 종료 시각 정보"),
-                                fieldWithPath("competitionDatetime.start").type(JsonFieldType.STRING).description("대회 시작 시각"),
-                                fieldWithPath("competitionDatetime.end").type(JsonFieldType.STRING).description("대회 종료 시각")
+                                fieldWithPath("competitionDatetime.start").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 시작 시각"),
+                                fieldWithPath("competitionDatetime.end").type(JsonFieldType.STRING).attributes(getDatetimeFormat()).description("대회 종료 시각")
                         )
                 ));
     }
