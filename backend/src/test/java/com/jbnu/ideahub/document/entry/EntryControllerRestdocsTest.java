@@ -23,6 +23,7 @@ import java.util.List;
 import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
 import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
 import static com.jbnu.ideahub.document.utils.DocumentFormatGenerator.getDatetimeFormat;
+import static com.jbnu.ideahub.document.utils.DocumentFormatGenerator.getEnumFormat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
@@ -72,7 +73,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("competitionId").type(JsonFieldType.NUMBER).optional().description("해당 작품이 등록된 대회의 id. 대회에 등록한 것이 아닌 작품만 별개로 등록한 경우 null"),
                                 fieldWithPath("title").type(JsonFieldType.STRING).description("작품 제목"),
                                 fieldWithPath("content").type(JsonFieldType.STRING).description("작품 상세 정보"),
-                                fieldWithPath("status").type(JsonFieldType.STRING).description("작품 진행 상태"),
+                                fieldWithPath("status").type(JsonFieldType.STRING).attributes(getEnumFormat()).description("작품 진행 상태"),
                                 fieldWithPath("github").type(JsonFieldType.STRING).description("작품 깃허브 주소"),
                                 fieldWithPath("prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
@@ -131,7 +132,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data[].competitionId").type(JsonFieldType.NUMBER).optional().description("해당 작품이 등록된 대회의 id. 대회에 등록한 것이 아닌 작품만 별개로 등록한 경우 null"),
                                 fieldWithPath("data[].title").type(JsonFieldType.STRING).description("작품 제목"),
                                 fieldWithPath("data[].content").type(JsonFieldType.STRING).description("작품 상세 정보"),
-                                fieldWithPath("data[].status").type(JsonFieldType.STRING).description("작품 진행 상태"),
+                                fieldWithPath("data[].status").type(JsonFieldType.STRING).attributes(getEnumFormat()).description("작품 진행 상태"),
                                 fieldWithPath("data[].github").type(JsonFieldType.STRING).description("작품 깃허브 주소"),
                                 fieldWithPath("data[].prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("data[].prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
@@ -184,7 +185,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("data.competitionId").type(JsonFieldType.NUMBER).optional().description("해당 작품이 등록된 대회의 id. 대회에 등록한 것이 아닌 작품만 별개로 등록한 경우 null"),
                                 fieldWithPath("data.title").type(JsonFieldType.STRING).description("작품 제목"),
                                 fieldWithPath("data.content").type(JsonFieldType.STRING).description("작품 상세 정보"),
-                                fieldWithPath("data.status").type(JsonFieldType.STRING).description("작품 진행 상태"),
+                                fieldWithPath("data.status").type(JsonFieldType.STRING).attributes(getEnumFormat()).description("작품 진행 상태"),
                                 fieldWithPath("data.github").type(JsonFieldType.STRING).description("작품 깃허브 주소"),
                                 fieldWithPath("data.prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("data.prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
@@ -231,7 +232,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
                                 fieldWithPath("competitionId").type(JsonFieldType.NUMBER).optional().description("해당 작품이 등록된 대회의 id. 대회에 등록한 것이 아닌 작품만 별개로 등록한 경우 null"),
                                 fieldWithPath("title").type(JsonFieldType.STRING).description("작품 제목"),
                                 fieldWithPath("content").type(JsonFieldType.STRING).description("작품 상세 정보"),
-                                fieldWithPath("status").type(JsonFieldType.STRING).description("작품 진행 상태"),
+                                fieldWithPath("status").type(JsonFieldType.STRING).attributes(getEnumFormat()).description("작품 진행 상태"),
                                 fieldWithPath("github").type(JsonFieldType.STRING).description("작품 깃허브 주소"),
                                 fieldWithPath("prize").optional().description("작품 수상 정보. 수상 작품이 없다면 null"),
                                 fieldWithPath("prize.prizeName").type(JsonFieldType.STRING).optional().description("수상한 상의 이름"),
