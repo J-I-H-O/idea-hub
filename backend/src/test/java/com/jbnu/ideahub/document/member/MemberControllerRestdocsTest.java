@@ -47,7 +47,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
         MemberRequest request = MemberRequest
                 .builder()
                 .studentId("20231124")
-                .password("password")
+                .password("password123")
                 .name("지호")
                 .email("jiho@test.com")
                 .github("github.com/J-I-H-O")
@@ -197,7 +197,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
         MemberRequest request = MemberRequest
                 .builder()
                 .studentId("20231124")
-                .password("password")
+                .password("password123")
                 .name("지호")
                 .email("jiho@test.com")
                 .github("github.com/J-I-H-O")
