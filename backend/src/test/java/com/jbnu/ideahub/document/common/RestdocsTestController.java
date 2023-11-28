@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.restDocs.common;
+package com.jbnu.ideahub.document.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;

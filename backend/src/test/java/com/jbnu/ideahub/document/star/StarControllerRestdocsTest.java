@@ -1,6 +1,6 @@
-package com.jbnu.ideahub.restDocs.star;
+package com.jbnu.ideahub.document.star;
 
-import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
+import com.jbnu.ideahub.document.common.RestdocsTestController;
 import com.jbnu.ideahub.star.dto.request.StarRequest;
 import com.jbnu.ideahub.star.presentation.StarController;
 import com.jbnu.ideahub.star.service.StarService;
@@ -12,8 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;

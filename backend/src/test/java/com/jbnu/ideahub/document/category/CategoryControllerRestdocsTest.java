@@ -1,11 +1,11 @@
-package com.jbnu.ideahub.restDocs.category;
+package com.jbnu.ideahub.document.category;
 
 import com.jbnu.ideahub.category.domain.Category;
 import com.jbnu.ideahub.category.dto.request.CategoryRequest;
 import com.jbnu.ideahub.category.dto.response.CategoryResponse;
 import com.jbnu.ideahub.category.presentation.CategoryController;
 import com.jbnu.ideahub.category.service.CategoryService;
-import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
+import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,8 +16,8 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 import java.util.List;
 
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;

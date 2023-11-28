@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.restDocs.utils;
+package com.jbnu.ideahub.document.utils;
 
 import org.springframework.restdocs.snippet.Attributes;
 

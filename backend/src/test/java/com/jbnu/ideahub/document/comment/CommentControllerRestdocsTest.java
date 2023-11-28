@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.restDocs.comment;
+package com.jbnu.ideahub.document.comment;
 
 import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
 import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;
@@ -6,7 +6,7 @@ import com.jbnu.ideahub.comment.dto.response.CommentResponse;
 import com.jbnu.ideahub.comment.presentation.CommentController;
 import com.jbnu.ideahub.comment.service.CommentService;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
-import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
+import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,9 +19,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
-import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.*;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.document.utils.DocumentFormatGenerator.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;

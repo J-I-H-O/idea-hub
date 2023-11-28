@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.restDocs.competition;
+package com.jbnu.ideahub.document.competition;
 
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.competition.domain.CompetitionStatus;
@@ -8,7 +8,8 @@ import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.presentation.CompetitionController;
 import com.jbnu.ideahub.competition.service.CompetitionService;
-import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
+import com.jbnu.ideahub.document.common.RestdocsTestController;
+import com.jbnu.ideahub.document.enumDocs.EnumSnippetGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,15 +22,17 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
-import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.getDatetimeFormat;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.document.utils.DocumentFormatGenerator.getDatetimeFormat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.snippet.Attributes.attributes;
+import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.restDocs.member;
+package com.jbnu.ideahub.document.member;
 
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.member.domain.MemberRole;
@@ -7,7 +7,7 @@ import com.jbnu.ideahub.member.dto.request.MemberRequest;
 import com.jbnu.ideahub.member.dto.response.MemberResponse;
 import com.jbnu.ideahub.member.presentation.MemberController;
 import com.jbnu.ideahub.member.service.MemberService;
-import com.jbnu.ideahub.restDocs.common.RestdocsTestController;
+import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,9 +20,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentRequest;
-import static com.jbnu.ideahub.restDocs.utils.ApiDocumentUtils.getDocumentResponse;
-import static com.jbnu.ideahub.restDocs.utils.DocumentFormatGenerator.getDatetimeFormat;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentRequest;
+import static com.jbnu.ideahub.document.utils.ApiDocumentUtils.getDocumentResponse;
+import static com.jbnu.ideahub.document.utils.DocumentFormatGenerator.getDatetimeFormat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
