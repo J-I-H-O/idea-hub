@@ -12,4 +12,9 @@ public class Prize {
 
     private String prizeName;
     private int prizePriority;
+
+    public Prize(final String prizeName, final int prizePriority) {
+        this.prizeName = prizeName;
+        this.prizePriority = prizePriority;
+    }
 }

@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.category.service;
+package com.jbnu.ideahub.category.application;
 
 import com.jbnu.ideahub.category.domain.Category;
 import com.jbnu.ideahub.category.dto.request.CategoryRequest;

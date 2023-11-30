@@ -7,7 +7,7 @@ import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
 import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import com.jbnu.ideahub.entry.presentation.EntryController;
-import com.jbnu.ideahub.entry.service.EntryService;
+import com.jbnu.ideahub.entry.application.EntryService;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

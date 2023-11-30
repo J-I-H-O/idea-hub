@@ -22,4 +22,8 @@ public class PrizeDto {
     public static PrizeDto of(final Prize prize) {
         return new PrizeDto(prize.getPrizeName(), prize.getPrizePriority());
     }
+
+    public Prize toEntity() {
+        return new Prize(prizeName, prizePriority);
+    }
 }

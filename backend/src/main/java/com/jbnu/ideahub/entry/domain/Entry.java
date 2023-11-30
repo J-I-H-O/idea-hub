@@ -49,4 +49,18 @@ public class Entry {
 
     @Embedded
     private DatetimeMetadata datetimeMetadata;
+
+    public Entry(final Competition competition, final String title, final String content,
+                 final EntryStatus status, final String github, final Prize prize, final List<Comment> comments,
+                 final List<MemberEntry> userEntries, final DatetimeMetadata datetimeMetadata) {
+        this.competition = competition;
+        this.title = title;
+        this.content = content;
+        this.status = status;
+        this.github = github;
+        this.prize = prize;
+        this.comments = comments;
+        this.userEntries = userEntries;
+        this.datetimeMetadata = datetimeMetadata;
+    }
 }

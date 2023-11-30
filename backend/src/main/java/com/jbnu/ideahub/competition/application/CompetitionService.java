@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.competition.service;
+package com.jbnu.ideahub.competition.application;
 
 import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
 import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;

@@ -2,7 +2,7 @@ package com.jbnu.ideahub.category.presentation;
 
 import com.jbnu.ideahub.category.dto.request.CategoryRequest;
 import com.jbnu.ideahub.category.dto.response.CategoryResponse;
-import com.jbnu.ideahub.category.service.CategoryService;
+import com.jbnu.ideahub.category.application.CategoryService;
 import com.jbnu.ideahub.common.dto.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

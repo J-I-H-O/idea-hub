@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.comment.service;
+package com.jbnu.ideahub.comment.application;
 
 import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
 import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;

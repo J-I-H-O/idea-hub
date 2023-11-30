@@ -1,7 +1,7 @@
 package com.jbnu.ideahub.like.presentation;
 
 import com.jbnu.ideahub.like.dto.request.LikeRequest;
-import com.jbnu.ideahub.like.service.LikeService;
+import com.jbnu.ideahub.like.application.LikeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

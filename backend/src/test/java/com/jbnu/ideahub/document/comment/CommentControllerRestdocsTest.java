@@ -4,7 +4,7 @@ import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
 import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;
 import com.jbnu.ideahub.comment.dto.response.CommentResponse;
 import com.jbnu.ideahub.comment.presentation.CommentController;
-import com.jbnu.ideahub.comment.service.CommentService;
+import com.jbnu.ideahub.comment.application.CommentService;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.BeforeEach;

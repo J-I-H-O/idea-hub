@@ -4,7 +4,7 @@ import com.jbnu.ideahub.common.dto.ApiResponse;
 import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
 import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
-import com.jbnu.ideahub.entry.service.EntryService;
+import com.jbnu.ideahub.entry.application.EntryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,9 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Void> createEntry(
-            @RequestBody @Valid final EntryCreateRequest entryCreateRequest
+            @RequestBody @Valid final EntryCreateRequest request
     ) {
-        final Long entryId = entryService.save(entryCreateRequest);
+        final Long entryId = entryService.save(request.getCompetitionId(), request);
         return ResponseEntity.created(URI.create("/entries/" + entryId)).build();
     }
 

@@ -57,4 +57,21 @@ public class Competition {
 
     @Embedded
     private DatetimeMetadata datetimeMetadata;
+
+    public Competition(Member host, Category category, List<Entry> entries, String title,
+                       String content, CompetitionStatus status, String place,
+                       RegistrationDatetime registrationDatetime, CompetitionDatetime competitionDatetime,
+                       List<MemberCompetition> memberCompetitions, DatetimeMetadata datetimeMetadata) {
+        this.host = host;
+        this.category = category;
+        this.entries = entries;
+        this.title = title;
+        this.content = content;
+        this.status = status;
+        this.place = place;
+        this.registrationDatetime = registrationDatetime;
+        this.competitionDatetime = competitionDatetime;
+        this.memberCompetitions = memberCompetitions;
+        this.datetimeMetadata = datetimeMetadata;
+    }
 }
