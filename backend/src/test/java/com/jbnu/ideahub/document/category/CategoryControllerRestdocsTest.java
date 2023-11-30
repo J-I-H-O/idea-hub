@@ -5,12 +5,16 @@ import com.jbnu.ideahub.category.dto.request.CategoryRequest;
 import com.jbnu.ideahub.category.dto.response.CategoryResponse;
 import com.jbnu.ideahub.category.presentation.CategoryController;
 import com.jbnu.ideahub.category.service.CategoryService;
+import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
+import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -23,6 +27,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -31,6 +36,15 @@ class CategoryControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
     private CategoryService categoryService;
+
+    // 제약 조건 문서화에 사용
+    private List<String> nameDescription;
+
+    @BeforeEach
+    void setUpConstraintsDescriptions() {
+        ConstraintDescriptions constraintDescriptions = new ConstraintDescriptions(CategoryRequest.class);
+        nameDescription = constraintDescriptions.descriptionsForProperty("name");
+    }
 
     @Test
     @DisplayName("카테고리 등록 API")
@@ -51,7 +65,7 @@ class CategoryControllerRestdocsTest extends RestdocsTestController {
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("카테고리 이름")
+                                fieldWithPath("name").type(JsonFieldType.STRING).attributes(key("constraints").value(nameDescription)).description("카테고리 이름")
                         )
                 ));
     }
@@ -103,7 +117,7 @@ class CategoryControllerRestdocsTest extends RestdocsTestController {
                                 parameterWithName("categoryId").description("수정할 카테고리의 id")
                         ),
                         requestFields(
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("새로운 카테고리 이름")
+                                fieldWithPath("name").type(JsonFieldType.STRING).attributes(key("constraints").value(nameDescription)).description("새로운 카테고리 이름")
                         )
                 ));
     }

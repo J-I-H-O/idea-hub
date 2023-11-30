@@ -7,11 +7,13 @@ import com.jbnu.ideahub.comment.presentation.CommentController;
 import com.jbnu.ideahub.comment.service.CommentService;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -28,6 +30,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -36,6 +39,19 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
     private CommentService commentService;
+
+    // 제약 조건 문서화에 사용
+    private List<String> createContentDescription;
+    private List<String> updateContentDescription;
+
+    @BeforeEach
+    void setUpConstraintsDescriptions() {
+        ConstraintDescriptions createConstraintDescriptions = new ConstraintDescriptions(CommentCreateRequest.class);
+        createContentDescription = createConstraintDescriptions.descriptionsForProperty("content");
+
+        ConstraintDescriptions updateConstraintDescriptions = new ConstraintDescriptions(CommentUpdateRequest.class);
+        updateContentDescription = updateConstraintDescriptions.descriptionsForProperty("content");
+    }
 
     @Test
     @DisplayName("댓글 등록 API")
@@ -56,7 +72,7 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
                         getDocumentResponse(),
                         requestFields(
                                 fieldWithPath("parentId").type(JsonFieldType.NUMBER).optional().description("부모 댓글의 id. 부모 댓글이 없는 경우 null"),
-                                fieldWithPath("content").type(JsonFieldType.STRING).description("댓글 내용")
+                                fieldWithPath("content").type(JsonFieldType.STRING).attributes(key("constraints").value(createContentDescription)).description("댓글 내용")
                         )
                 ));
     }
@@ -139,7 +155,7 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
                             parameterWithName("commentId").description("수정할 댓글의 id")
                         ),
                         requestFields(
-                            fieldWithPath("content").type(JsonFieldType.STRING).description("수정할 댓글 내용")
+                            fieldWithPath("content").type(JsonFieldType.STRING).attributes(key("constraints").value(updateContentDescription)).description("수정할 댓글 내용")
                         )
                 ));
     }
