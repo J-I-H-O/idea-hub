@@ -125,7 +125,7 @@ public class CommentControllerRestdocsTest extends RestdocsTestController {
         String jsonRequest = objectMapper.writeValueAsString(request);
 
         // when
-        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.put("/comments/{commentId}", 1L)
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.patch("/comments/{commentId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonRequest));

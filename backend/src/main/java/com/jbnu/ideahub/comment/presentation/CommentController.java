@@ -36,7 +36,7 @@ public class CommentController {
         return ResponseEntity.ok().body(new ApiResponse<>(commentResponses));
     }
 
-    @PutMapping("/comments/{commentId}")
+    @PatchMapping("/comments/{commentId}")
     public ResponseEntity<Void> updateComment(
             @PathVariable final Long commentId,
             @RequestBody @Valid final CommentUpdateRequest commentUpdateRequest

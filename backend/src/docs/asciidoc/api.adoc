@@ -248,20 +248,20 @@ include::{snippets}/members/delete-member/path-parameters.adoc[]
 ==== 5.5.3. Response
 include::{snippets}/members/delete-member/http-response.adoc[]
 
-== 6. Stars
+== 6. Likes
 
 === 6.1. 추천 등록
 ==== 6.1.1. Request
-include::{snippets}/stars/create-star/http-request.adoc[]
+include::{snippets}/likes/create-like/http-request.adoc[]
 ==== 6.1.2. Request-Fields
-include::{snippets}/stars/create-star/request-fields.adoc[]
+include::{snippets}/likes/create-like/request-fields.adoc[]
 ==== 6.1.3. Response
-include::{snippets}/stars/create-star/http-response.adoc[]
+include::{snippets}/likes/create-like/http-response.adoc[]
 
 === 6.2. 추천 삭제
 ==== 6.2.1. Request
-include::{snippets}/stars/delete-star/http-request.adoc[]
+include::{snippets}/likes/delete-like/http-request.adoc[]
 ==== 6.2.2. Request-Fields
-include::{snippets}/stars/delete-star/request-fields.adoc[]
+include::{snippets}/likes/delete-like/request-fields.adoc[]
 ==== 6.2.3. Response
-include::{snippets}/stars/delete-star/http-response.adoc[]
+include::{snippets}/likes/delete-like/http-response.adoc[]

@@ -1,7 +1,8 @@
 package com.jbnu.ideahub.competition.presentation;
 
 import com.jbnu.ideahub.common.dto.ApiResponse;
-import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
+import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
+import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.service.CompetitionService;
 import jakarta.validation.Valid;
@@ -21,9 +22,9 @@ public class CompetitionController {
 
     @PostMapping
     public ResponseEntity<Void> createCompetition(
-            @RequestBody @Valid final CompetitionRequest competitionRequest
+            @RequestBody @Valid final CompetitionCreateRequest competitionCreateRequest
     ) {
-        final Long competitionId = competitionService.save(competitionRequest);
+        final Long competitionId = competitionService.save(competitionCreateRequest);
         return ResponseEntity.created(URI.create("/competitions/" + competitionId)).build();
     }
 
@@ -41,12 +42,12 @@ public class CompetitionController {
         return ResponseEntity.ok(new ApiResponse<>(competitionResponse));
     }
 
-    @PutMapping("/{competitionId}")
+    @PatchMapping("/{competitionId}")
     public ResponseEntity<Void> updateCompetition(
             @PathVariable final Long competitionId,
-            @RequestBody @Valid CompetitionRequest competitionRequest
+            @RequestBody @Valid CompetitionUpdateRequest competitionUpdateRequest
     ) {
-        competitionService.update(competitionId, competitionRequest);
+        competitionService.update(competitionId, competitionUpdateRequest);
         return ResponseEntity.noContent().build();
     }
 

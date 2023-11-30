@@ -3,7 +3,8 @@ package com.jbnu.ideahub.document.entry;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.entry.domain.EntryStatus;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
-import com.jbnu.ideahub.entry.dto.request.EntryRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import com.jbnu.ideahub.entry.presentation.EntryController;
 import com.jbnu.ideahub.entry.service.EntryService;
@@ -46,7 +47,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
     void createEntry() throws Exception {
         // given
         PrizeDto prize = new PrizeDto("대상", 1);
-        EntryRequest request = EntryRequest
+        EntryCreateRequest request = EntryCreateRequest
                 .builder()
                 .competitionId(1L)
                 .title("작품1")
@@ -202,7 +203,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
     void updateEntry() throws Exception {
         // given
         PrizeDto prize = new PrizeDto("대상", 1);
-        EntryRequest request = EntryRequest
+        EntryUpdateRequest request = EntryUpdateRequest
                 .builder()
                 .competitionId(1L)
                 .title("작품1")
@@ -215,7 +216,8 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
         String jsonRequest = objectMapper.writeValueAsString(request);
 
         // when
-        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.put("/entries/{entryId}", 1L)
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
+                .patch("/entries/{entryId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonRequest));

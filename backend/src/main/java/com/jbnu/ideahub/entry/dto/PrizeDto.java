@@ -13,9 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class PrizeDto {
 
     private static final int MAX_NAME_SIZE = 255;
-    private static final String NAME_LENGTH_ERROR_MESSAGE = "상 이름은 " + MAX_NAME_SIZE + "자를 넘을 수 없습니다.";
 
-    @Size(max = MAX_NAME_SIZE, message = NAME_LENGTH_ERROR_MESSAGE)
+    @Size(max = MAX_NAME_SIZE, message = "상 이름은 " + MAX_NAME_SIZE + "자를 넘을 수 없습니다.")
     private String prizeName;
 
     private int prizePriority;

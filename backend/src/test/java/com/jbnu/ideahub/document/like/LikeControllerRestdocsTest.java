@@ -1,9 +1,9 @@
-package com.jbnu.ideahub.document.star;
+package com.jbnu.ideahub.document.like;
 
 import com.jbnu.ideahub.document.common.RestdocsTestController;
-import com.jbnu.ideahub.star.dto.request.StarRequest;
-import com.jbnu.ideahub.star.presentation.StarController;
-import com.jbnu.ideahub.star.service.StarService;
+import com.jbnu.ideahub.like.dto.request.LikeRequest;
+import com.jbnu.ideahub.like.presentation.LikeController;
+import com.jbnu.ideahub.like.service.LikeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,27 +21,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(StarController.class)
-public class StarControllerRestdocsTest extends RestdocsTestController {
+@WebMvcTest(LikeController.class)
+public class LikeControllerRestdocsTest extends RestdocsTestController {
 
     @MockBean
-    private StarService starService;
+    private LikeService likeService;
 
     @Test
     @DisplayName("추천 등록 API")
-    void createStar() throws Exception {
+    void createLike() throws Exception {
         // given
-        StarRequest request = new StarRequest(1L, 1L);
+        LikeRequest request = new LikeRequest(1L, 1L);
         String jsonRequest = objectMapper.writeValueAsString(request);
 
         // when
-        ResultActions result = mockMvc.perform(post("/stars")
+        ResultActions result = mockMvc.perform(post("/likes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonRequest));
 
         // then
         result.andExpect(status().isNoContent())
-                .andDo(document("stars/create-star",
+                .andDo(document("likes/create-like",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
@@ -53,19 +53,19 @@ public class StarControllerRestdocsTest extends RestdocsTestController {
 
     @Test
     @DisplayName("추천 삭제 API")
-    void deleteStar() throws Exception {
+    void deleteLike() throws Exception {
         // given
-        StarRequest request = new StarRequest(1L, 1L);
+        LikeRequest request = new LikeRequest(1L, 1L);
         String jsonRequest = objectMapper.writeValueAsString(request);
 
         // when
-        ResultActions result = mockMvc.perform(delete("/stars")
+        ResultActions result = mockMvc.perform(delete("/likes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonRequest));
 
         // then
         result.andExpect(status().isNoContent())
-                .andDo(document("stars/delete-star",
+                .andDo(document("likes/delete-like",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(

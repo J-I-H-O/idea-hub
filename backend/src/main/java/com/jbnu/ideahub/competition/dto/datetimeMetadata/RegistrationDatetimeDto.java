@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.competition.dto;
+package com.jbnu.ideahub.competition.dto.datetimeMetadata;
 
 import lombok.*;
 

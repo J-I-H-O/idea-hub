@@ -3,7 +3,8 @@ package com.jbnu.ideahub.document.member;
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.member.domain.MemberRole;
 import com.jbnu.ideahub.member.domain.MemberStatus;
-import com.jbnu.ideahub.member.dto.request.MemberRequest;
+import com.jbnu.ideahub.member.dto.request.MemberCreateRequest;
+import com.jbnu.ideahub.member.dto.request.MemberUpdateRequest;
 import com.jbnu.ideahub.member.dto.response.MemberResponse;
 import com.jbnu.ideahub.member.presentation.MemberController;
 import com.jbnu.ideahub.member.service.MemberService;
@@ -44,7 +45,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
     @DisplayName("회원 등록 API")
     void createMember() throws Exception {
         // given
-        MemberRequest request = MemberRequest
+        MemberCreateRequest request = MemberCreateRequest
                 .builder()
                 .studentId("20231124")
                 .password("password123")
@@ -194,7 +195,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
     @DisplayName("회원 수정 API")
     void updateMember() throws Exception {
         // given
-        MemberRequest request = MemberRequest
+        MemberUpdateRequest request = MemberUpdateRequest
                 .builder()
                 .studentId("20231124")
                 .password("password123")
@@ -209,7 +210,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
 
         // when
         ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
-                .put("/members/{memberId}", 1L)
+                .patch("/members/{memberId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonRequest));
@@ -239,7 +240,7 @@ public class MemberControllerRestdocsTest extends RestdocsTestController {
     void deleteMember() throws Exception {
         // when
         ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
-                .put("/members/{memberId}/delete", 1L));
+                .delete("/members/{memberId}", 1L));
 
         // then
         result.andExpect(status().isNoContent())

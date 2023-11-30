@@ -2,14 +2,14 @@ package com.jbnu.ideahub.document.competition;
 
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.competition.domain.CompetitionStatus;
-import com.jbnu.ideahub.competition.dto.CompetitionDatetimeDto;
-import com.jbnu.ideahub.competition.dto.RegistrationDatetimeDto;
-import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
+import com.jbnu.ideahub.competition.dto.datetimeMetadata.CompetitionDatetimeDto;
+import com.jbnu.ideahub.competition.dto.datetimeMetadata.RegistrationDatetimeDto;
+import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
+import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.presentation.CompetitionController;
 import com.jbnu.ideahub.competition.service.CompetitionService;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
-import com.jbnu.ideahub.document.enumDocs.EnumSnippetGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -32,8 +32,6 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.restdocs.snippet.Attributes.attributes;
-import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -48,7 +46,7 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
     @DisplayName("대회 등록 API")
     void createCompetition() throws Exception {
         // given
-        CompetitionRequest request = CompetitionRequest
+        CompetitionCreateRequest request = CompetitionCreateRequest
                 .builder()
                 .title("대회 이름짓기 대회")
                 .content("누가 제일 멋진 이름을 지을까요?")
@@ -247,7 +245,7 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
     @DisplayName("대회 수정 API")
     void updateCompetition() throws Exception {
         // given
-        CompetitionRequest request = CompetitionRequest
+        CompetitionUpdateRequest request = CompetitionUpdateRequest
                 .builder()
                 .title("대회 이름짓기 대회")
                 .content("누가 제일 멋진 이름을 지을까요?")
@@ -270,9 +268,9 @@ public class CompetitionControllerRestdocsTest extends RestdocsTestController {
 
         // when
         ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
-                .put("/competitions/{competitionId}", 1L)
+                .patch("/competitions/{competitionId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("uTF-8")
+                .characterEncoding("UTF-8")
                 .content(jsonRequest));
 
         // then

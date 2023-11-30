@@ -1,6 +1,7 @@
 package com.jbnu.ideahub.entry.service;
 
-import com.jbnu.ideahub.entry.dto.request.EntryRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 public class EntryService {
-    public Long save(EntryRequest entryRequest) {
+    public Long save(EntryCreateRequest entryCreateRequest) {
         return null;
     }
 
@@ -20,7 +21,7 @@ public class EntryService {
         return null;
     }
 
-    public void update(Long entryId, EntryRequest entryRequest) {
+    public void update(Long entryId, EntryUpdateRequest entryUpdateRequest) {
 
     }
 

@@ -1,6 +1,7 @@
 package com.jbnu.ideahub.competition.service;
 
-import com.jbnu.ideahub.competition.dto.request.CompetitionRequest;
+import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
+import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 public class CompetitionService {
-    public Long save(CompetitionRequest competitionRequest) {
+    public Long save(CompetitionCreateRequest competitionCreateRequest) {
         return 1L;
     }
 
@@ -21,7 +22,7 @@ public class CompetitionService {
         return null;
     }
 
-    public void update(Long competitionId, CompetitionRequest competitionRequest) {
+    public void update(Long competitionId, CompetitionUpdateRequest competitionUpdateRequest) {
 
     }
 

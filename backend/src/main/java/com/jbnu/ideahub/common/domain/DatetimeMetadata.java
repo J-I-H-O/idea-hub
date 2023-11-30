@@ -16,4 +16,13 @@ public class DatetimeMetadata {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
+    public void entityCreated() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    public void entityUpdated() {
+        updatedAt = LocalDateTime.now();
+    }
 }

@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 public enum CompetitionStatus implements EnumType {
 
     PREPARING("준비중"),
-    REGISTERING("접수중"), 
+    REGISTERING("접수중"),
     ONGOING("진행중"),
     FINISHED("종료");
 

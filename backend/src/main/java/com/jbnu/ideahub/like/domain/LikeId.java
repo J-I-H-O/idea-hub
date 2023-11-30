@@ -1,11 +1,11 @@
-package com.jbnu.ideahub.star.domain;
+package com.jbnu.ideahub.like.domain;
 
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
 @Embeddable
-public class StarId implements Serializable {
+public class LikeId implements Serializable {
 
     private Long memberId;
     private Long entryId;

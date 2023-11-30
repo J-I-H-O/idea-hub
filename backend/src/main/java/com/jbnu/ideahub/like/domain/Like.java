@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.star.domain;
+package com.jbnu.ideahub.like.domain;
 
 import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.member.domain.Member;
@@ -7,10 +7,10 @@ import lombok.Getter;
 
 @Getter
 @Entity
-public class Star {
+public class Like {
 
     @EmbeddedId
-    private StarId id;
+    private LikeId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("memberId")

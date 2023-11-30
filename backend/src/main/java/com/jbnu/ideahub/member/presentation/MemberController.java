@@ -1,7 +1,8 @@
 package com.jbnu.ideahub.member.presentation;
 
 import com.jbnu.ideahub.common.dto.ApiResponse;
-import com.jbnu.ideahub.member.dto.request.MemberRequest;
+import com.jbnu.ideahub.member.dto.request.MemberCreateRequest;
+import com.jbnu.ideahub.member.dto.request.MemberUpdateRequest;
 import com.jbnu.ideahub.member.dto.response.MemberResponse;
 import com.jbnu.ideahub.member.service.MemberService;
 import jakarta.validation.Valid;
@@ -21,9 +22,9 @@ public class MemberController {
 
     @PostMapping
     public ResponseEntity<Void> createMember(
-            @RequestBody @Valid final MemberRequest memberRequest
+            @RequestBody @Valid final MemberCreateRequest memberCreateRequest
     ) {
-        final Long memberId = memberService.save(memberRequest);
+        final Long memberId = memberService.save(memberCreateRequest);
         return ResponseEntity.created(URI.create("/members/" + memberId)).build();
     }
 
@@ -41,19 +42,20 @@ public class MemberController {
         return ResponseEntity.ok(new ApiResponse<>(memberResponse));
     }
 
-    @PutMapping("/{memberId}")
+    @PatchMapping("/{memberId}")
     public ResponseEntity<Void> updateMember(
             @PathVariable final Long memberId,
-            @RequestBody @Valid final MemberRequest memberRequest
+            @RequestBody @Valid final MemberUpdateRequest memberUpdateRequest
     ) {
-        memberService.update(memberId, memberRequest);
+        memberService.update(memberId, memberUpdateRequest);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{memberId}/delete")
+    @DeleteMapping("/{memberId}")
     public ResponseEntity<Void> deleteMember(
             @PathVariable final Long memberId
     ) {
+        // 논리 삭제로 구현
         memberService.delete(memberId);
         return ResponseEntity.noContent().build();
     }

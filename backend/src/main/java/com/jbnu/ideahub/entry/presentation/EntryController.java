@@ -1,7 +1,8 @@
 package com.jbnu.ideahub.entry.presentation;
 
 import com.jbnu.ideahub.common.dto.ApiResponse;
-import com.jbnu.ideahub.entry.dto.request.EntryRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
+import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import com.jbnu.ideahub.entry.service.EntryService;
 import jakarta.validation.Valid;
@@ -21,9 +22,9 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Void> createEntry(
-            @RequestBody @Valid final EntryRequest entryRequest
+            @RequestBody @Valid final EntryCreateRequest entryCreateRequest
     ) {
-        final Long entryId = entryService.save(entryRequest);
+        final Long entryId = entryService.save(entryCreateRequest);
         return ResponseEntity.created(URI.create("/entries/" + entryId)).build();
     }
 
@@ -41,12 +42,12 @@ public class EntryController {
         return ResponseEntity.ok(new ApiResponse<>(entryResponse));
     }
 
-    @PutMapping("/{entryId}")
+    @PatchMapping("/{entryId}")
     public ResponseEntity<Void> updateEntry(
             @PathVariable final Long entryId,
-            @RequestBody @Valid EntryRequest entryRequest
+            @RequestBody @Valid EntryUpdateRequest entryUpdateRequest
     ) {
-        entryService.update(entryId, entryRequest);
+        entryService.update(entryId, entryUpdateRequest);
         return ResponseEntity.noContent().build();
     }
 
