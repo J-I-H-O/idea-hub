@@ -3,9 +3,12 @@ package com.jbnu.ideahub.like.domain;
 import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.member.domain.Member;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Like {
 

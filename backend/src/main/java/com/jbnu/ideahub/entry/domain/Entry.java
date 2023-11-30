@@ -5,12 +5,15 @@ import com.jbnu.ideahub.common.domain.DatetimeMetadata;
 import com.jbnu.ideahub.competition.domain.Competition;
 import com.jbnu.ideahub.member.domain.MemberEntry;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Entry {
 

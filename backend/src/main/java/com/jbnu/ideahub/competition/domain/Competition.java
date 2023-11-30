@@ -6,12 +6,15 @@ import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.member.domain.Member;
 import com.jbnu.ideahub.member.domain.MemberCompetition;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Competition {
 
