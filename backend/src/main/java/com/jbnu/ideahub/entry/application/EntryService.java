@@ -8,12 +8,12 @@ import com.jbnu.ideahub.entry.domain.repository.EntryRepository;
 import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
 import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
+import com.jbnu.ideahub.entry.exception.NoSuchEntryException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -40,10 +40,19 @@ public class EntryService {
         return null;
     }
 
-    public void update(Long entryId, EntryUpdateRequest entryUpdateRequest) {
+    @Transactional
+    public void update(Long entryId, EntryUpdateRequest request) {
+        Competition competition = null;
+        if (request.getCompetitionId() != null) {
+            competition = competitionRepository.getById(request.getCompetitionId());
+        }
+        Entry entry = entryRepository.findById(entryId)
+                .orElseThrow(NoSuchEntryException::new);
 
+        entry.update(competition, request);
     }
 
+    @Transactional
     public void delete(Long entryId) {
 
     }

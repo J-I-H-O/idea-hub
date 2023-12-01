@@ -23,4 +23,8 @@ public class DatetimeMetadata {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
+
+    public void update() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

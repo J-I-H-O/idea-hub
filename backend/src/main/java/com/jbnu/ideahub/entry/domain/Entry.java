@@ -3,6 +3,7 @@ package com.jbnu.ideahub.entry.domain;
 import com.jbnu.ideahub.comment.domain.Comment;
 import com.jbnu.ideahub.common.domain.DatetimeMetadata;
 import com.jbnu.ideahub.competition.domain.Competition;
+import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.member.domain.MemberEntry;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -62,5 +63,29 @@ public class Entry {
         this.comments = comments;
         this.userEntries = userEntries;
         this.datetimeMetadata = datetimeMetadata;
+    }
+
+    public void update(Competition competition, EntryUpdateRequest request) {
+        this.competition = competition;
+        updateFields(request);
+        datetimeMetadata.update();
+    }
+
+    private void updateFields(EntryUpdateRequest request) {
+        if (request.getTitle() != null) {
+            this.title = request.getTitle();
+        }
+        if (request.getContent() != null) {
+            this.content = request.getContent();
+        }
+        if (request.getStatus() != null) {
+            this.status = request.getStatus();
+        }
+        if (request.getGithub() != null) {
+            this.github = request.getGithub();
+        }
+        if (request.getPrize() != null) {
+            this.prize = request.getPrize();
+        }
     }
 }

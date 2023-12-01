@@ -2,6 +2,7 @@ package com.jbnu.ideahub.document.entry;
 
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
 import com.jbnu.ideahub.entry.domain.EntryStatus;
+import com.jbnu.ideahub.entry.domain.Prize;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
 import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
 import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
@@ -202,7 +203,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
     @DisplayName("작품 수정 API")
     void updateEntry() throws Exception {
         // given
-        PrizeDto prize = new PrizeDto("대상", 1);
+        Prize prize = new Prize("대상", 1);
         EntryUpdateRequest request = EntryUpdateRequest
                 .builder()
                 .competitionId(1L)

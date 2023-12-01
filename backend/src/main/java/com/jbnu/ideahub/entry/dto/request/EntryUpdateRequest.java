@@ -1,9 +1,8 @@
 package com.jbnu.ideahub.entry.dto.request;
 
 import com.jbnu.ideahub.entry.domain.EntryStatus;
+import com.jbnu.ideahub.entry.domain.Prize;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,5 +33,5 @@ public class EntryUpdateRequest {
     @Size(max = MAX_GITHUB_SIZE, message = "작품 깃허브 주소는 " + MAX_GITHUB_SIZE + "자를 넘을 수 없습니다.")
     private String github;
 
-    private PrizeDto prize;
+    private Prize prize;
 }
