@@ -31,9 +31,14 @@ public class EntryResponse {
                 entry.getDatetimeMetadata().getUpdatedAt()
         );
 
+        Long competitionId = null;
+        if (entry.getCompetition() != null) {
+            competitionId = entry.getCompetition().getId();
+        }
+
         return new EntryResponse(
                 entry.getId(),
-                entry.getCompetition().getId(),
+                competitionId,
                 entry.getTitle(),
                 entry.getContent(),
                 entry.getStatus(),

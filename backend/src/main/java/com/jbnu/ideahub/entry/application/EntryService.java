@@ -37,7 +37,10 @@ public class EntryService {
     }
 
     public EntryResponse findById(Long entryId) {
-        return null;
+        Entry entry = entryRepository.findById(entryId)
+                .orElseThrow(NoSuchEntryException::new);
+
+        return EntryResponse.of(entry);
     }
 
     @Transactional
