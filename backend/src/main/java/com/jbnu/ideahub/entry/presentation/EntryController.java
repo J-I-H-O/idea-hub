@@ -42,7 +42,7 @@ public class EntryController {
         return ResponseEntity.ok(new ApiResponse<>(entryResponse));
     }
 
-    @PatchMapping("/{entryId}")
+    @PutMapping("/{entryId}")
     public ResponseEntity<Void> updateEntry(
             @PathVariable final Long entryId,
             @RequestBody @Valid EntryUpdateRequest entryUpdateRequest

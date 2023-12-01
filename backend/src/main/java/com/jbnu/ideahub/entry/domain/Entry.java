@@ -67,25 +67,11 @@ public class Entry {
 
     public void update(Competition competition, EntryUpdateRequest request) {
         this.competition = competition;
-        updateFields(request);
+        this.title = request.getTitle();
+        this.content = request.getContent();
+        this.status = request.getStatus();
+        this.github = request.getGithub();
+        this.prize = request.getPrize();
         datetimeMetadata.update();
-    }
-
-    private void updateFields(EntryUpdateRequest request) {
-        if (request.getTitle() != null) {
-            this.title = request.getTitle();
-        }
-        if (request.getContent() != null) {
-            this.content = request.getContent();
-        }
-        if (request.getStatus() != null) {
-            this.status = request.getStatus();
-        }
-        if (request.getGithub() != null) {
-            this.github = request.getGithub();
-        }
-        if (request.getPrize() != null) {
-            this.prize = request.getPrize();
-        }
     }
 }

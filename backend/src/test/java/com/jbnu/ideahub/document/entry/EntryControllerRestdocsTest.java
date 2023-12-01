@@ -218,7 +218,7 @@ public class EntryControllerRestdocsTest extends RestdocsTestController {
 
         // when
         ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders
-                .patch("/entries/{entryId}", 1L)
+                .put("/entries/{entryId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonRequest));

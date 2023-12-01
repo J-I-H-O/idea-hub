@@ -57,6 +57,6 @@ public class EntryService {
 
     @Transactional
     public void delete(Long entryId) {
-
+        entryRepository.deleteById(entryId);
     }
 }
