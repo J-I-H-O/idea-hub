@@ -10,14 +10,16 @@ import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import com.jbnu.ideahub.entry.exception.NoSuchEntryException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-@Service
 public class EntryService {
 
     private final EntryRepository entryRepository;
@@ -25,15 +27,20 @@ public class EntryService {
 
     @Transactional
     public Long save(final Long competitionId, final EntryCreateRequest request) {
-        Competition competition = competitionRepository.getById(competitionId);
+        Optional<Competition> competition = Optional.empty();
+        if (competitionId != null) {
+            competition = competitionRepository.findById(competitionId);
+        }
+
         DatetimeMetadata datetimeMetadata = new DatetimeMetadata();
 
-        Entry saved = entryRepository.save(request.toEntity(competition, datetimeMetadata));
+        Entry saved = entryRepository.save(request.toEntity(competition.orElse(null), datetimeMetadata));
         return saved.getId();
     }
 
-    public List<EntryResponse> findAll() {
-        return null;
+    public Page<EntryResponse> findAll(Pageable pageable) {
+        return entryRepository.findAll(pageable)
+                .map(EntryResponse::of);
     }
 
     public EntryResponse findById(Long entryId) {
@@ -45,14 +52,15 @@ public class EntryService {
 
     @Transactional
     public void update(Long entryId, EntryUpdateRequest request) {
-        Competition competition = null;
+        Optional<Competition> competition = Optional.empty();
         if (request.getCompetitionId() != null) {
-            competition = competitionRepository.getById(request.getCompetitionId());
+            competition = competitionRepository.findById(request.getCompetitionId());
         }
+
         Entry entry = entryRepository.findById(entryId)
                 .orElseThrow(NoSuchEntryException::new);
 
-        entry.update(competition, request);
+        entry.update(competition.orElse(null), request);
     }
 
     @Transactional

@@ -7,11 +7,14 @@ import com.jbnu.ideahub.entry.dto.response.EntryResponse;
 import com.jbnu.ideahub.entry.application.EntryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,9 +32,16 @@ public class EntryController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<EntryResponse>>> getEntries() {
-        List<EntryResponse> entryResponses = entryService.findAll();
-        return ResponseEntity.ok().body(new ApiResponse<>(entryResponses));
+    public ResponseEntity<ApiResponse<Page<EntryResponse>>> getEntries(
+            @PageableDefault(
+                    page = 0,
+                    size = 6,
+                    sort = "datetimeMetadata.createdAt",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable
+    ) {
+        Page<EntryResponse> response = entryService.findAll(pageable);
+        return ResponseEntity.ok().body(new ApiResponse<>(response));
     }
 
     @GetMapping("/{entryId}")
