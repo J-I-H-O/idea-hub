@@ -17,9 +17,12 @@ public class PrizeDto {
     @Size(max = MAX_NAME_SIZE, message = "상 이름은 " + MAX_NAME_SIZE + "자를 넘을 수 없습니다.")
     private String prizeName;
 
-    private int prizePriority;
+    private Integer prizePriority;
 
     public static PrizeDto of(final Prize prize) {
+        if (prize == null) {
+            return null;
+        }
         return new PrizeDto(prize.getPrizeName(), prize.getPrizePriority());
     }
 

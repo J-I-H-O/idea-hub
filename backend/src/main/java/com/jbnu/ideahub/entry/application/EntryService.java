@@ -32,9 +32,7 @@ public class EntryService {
             competition = competitionRepository.findById(competitionId);
         }
 
-        DatetimeMetadata datetimeMetadata = new DatetimeMetadata();
-
-        Entry saved = entryRepository.save(request.toEntity(competition.orElse(null), datetimeMetadata));
+        Entry saved = entryRepository.save(request.toEntity(competition.orElse(null), DatetimeMetadata.create()));
         return saved.getId();
     }
 

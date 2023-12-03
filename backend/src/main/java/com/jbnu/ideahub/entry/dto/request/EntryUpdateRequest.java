@@ -33,5 +33,5 @@ public class EntryUpdateRequest {
     @Size(max = MAX_GITHUB_SIZE, message = "작품 깃허브 주소는 " + MAX_GITHUB_SIZE + "자를 넘을 수 없습니다.")
     private String github;
 
-    private Prize prize;
+    private PrizeDto prize;
 }

@@ -1,18 +1,18 @@
 package com.jbnu.ideahub.entry.dto.request;
 
-import com.jbnu.ideahub.comment.domain.Comment;
 import com.jbnu.ideahub.common.domain.DatetimeMetadata;
 import com.jbnu.ideahub.competition.domain.Competition;
 import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.entry.domain.EntryStatus;
+import com.jbnu.ideahub.entry.domain.Prize;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
-import com.jbnu.ideahub.member.domain.MemberEntry;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @NoArgsConstructor
@@ -46,7 +46,18 @@ public class EntryCreateRequest {
     private PrizeDto prize;
 
     public Entry toEntity(final Competition competition, final DatetimeMetadata datetimeMetadata) {
-        return new Entry(competition, title, content, status, github,
-                prize.toEntity(), null, null, datetimeMetadata);
+        Prize prize = Optional.ofNullable(this.prize)
+                .map(PrizeDto::toEntity)
+                .orElse(null);
+
+        return Entry.builder()
+                .competition(competition)
+                .title(title)
+                .content(content)
+                .status(status)
+                .github(github)
+                .prize(prize)
+                .datetimeMetadata(datetimeMetadata)
+                .build();
     }
 }

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 public class Prize {
 
     private String prizeName;
-    private int prizePriority;
+    private Integer prizePriority;
 
-    public Prize(final String prizeName, final int prizePriority) {
+    public Prize(final String prizeName, final Integer prizePriority) {
         this.prizeName = prizeName;
         this.prizePriority = prizePriority;
     }
