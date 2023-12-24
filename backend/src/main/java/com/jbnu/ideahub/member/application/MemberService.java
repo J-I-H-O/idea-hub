@@ -1,4 +1,4 @@
-package com.jbnu.ideahub.member.service;
+package com.jbnu.ideahub.member.application;
 
 import com.jbnu.ideahub.member.dto.request.MemberCreateRequest;
 import com.jbnu.ideahub.member.dto.request.MemberUpdateRequest;

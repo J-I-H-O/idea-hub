@@ -4,7 +4,7 @@ import com.jbnu.ideahub.common.dto.ApiResponse;
 import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
 import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
-import com.jbnu.ideahub.competition.service.CompetitionService;
+import com.jbnu.ideahub.competition.application.CompetitionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

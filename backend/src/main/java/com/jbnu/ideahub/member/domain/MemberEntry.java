@@ -2,9 +2,12 @@ package com.jbnu.ideahub.member.domain;
 
 import com.jbnu.ideahub.entry.domain.Entry;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class MemberEntry {
 

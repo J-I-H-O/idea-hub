@@ -1,6 +1,7 @@
 package com.jbnu.ideahub.entry.dto.response;
 
 import com.jbnu.ideahub.common.dto.DatetimeMetadataDto;
+import com.jbnu.ideahub.competition.domain.Competition;
 import com.jbnu.ideahub.entry.domain.Entry;
 import com.jbnu.ideahub.entry.domain.EntryStatus;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
@@ -8,6 +9,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -24,22 +28,28 @@ public class EntryResponse {
     private final DatetimeMetadataDto datetimeMetadata;
 
     public static EntryResponse of(final Entry entry) {
-        PrizeDto prizeDto = PrizeDto.of(entry.getPrize());
+        Long competitionId = Optional.ofNullable(entry.getCompetition())
+                .map(Competition::getId)
+                .orElse(null);
+
+        PrizeDto prizeDto = Optional.ofNullable(entry.getPrize())
+                .map(PrizeDto::of)
+                .orElse(null);
 
         DatetimeMetadataDto datetimeMetadataDto = DatetimeMetadataDto.createDatetimeMetadataResponse(
                 entry.getDatetimeMetadata().getCreatedAt(),
                 entry.getDatetimeMetadata().getUpdatedAt()
         );
 
-        return new EntryResponse(
-                entry.getId(),
-                entry.getCompetition().getId(),
-                entry.getTitle(),
-                entry.getContent(),
-                entry.getStatus(),
-                entry.getGithub(),
-                prizeDto,
-                datetimeMetadataDto
-        );
+        return EntryResponse.builder()
+                .id(entry.getId())
+                .competitionId(competitionId)
+                .title(entry.getTitle())
+                .content(entry.getContent())
+                .status(entry.getStatus())
+                .github(entry.getGithub())
+                .prize(prizeDto)
+                .datetimeMetadata(datetimeMetadataDto)
+                .build();
     }
 }

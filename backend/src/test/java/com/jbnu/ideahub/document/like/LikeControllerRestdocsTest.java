@@ -3,7 +3,7 @@ package com.jbnu.ideahub.document.like;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
 import com.jbnu.ideahub.like.dto.request.LikeRequest;
 import com.jbnu.ideahub.like.presentation.LikeController;
-import com.jbnu.ideahub.like.service.LikeService;
+import com.jbnu.ideahub.like.application.LikeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

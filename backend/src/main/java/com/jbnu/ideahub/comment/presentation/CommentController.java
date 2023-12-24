@@ -3,7 +3,7 @@ package com.jbnu.ideahub.comment.presentation;
 import com.jbnu.ideahub.comment.dto.request.CommentCreateRequest;
 import com.jbnu.ideahub.comment.dto.request.CommentUpdateRequest;
 import com.jbnu.ideahub.comment.dto.response.CommentResponse;
-import com.jbnu.ideahub.comment.service.CommentService;
+import com.jbnu.ideahub.comment.application.CommentService;
 import com.jbnu.ideahub.common.dto.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

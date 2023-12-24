@@ -1,9 +1,8 @@
 package com.jbnu.ideahub.entry.dto.request;
 
 import com.jbnu.ideahub.entry.domain.EntryStatus;
+import com.jbnu.ideahub.entry.domain.Prize;
 import com.jbnu.ideahub.entry.dto.PrizeDto;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

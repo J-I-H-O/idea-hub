@@ -5,12 +5,15 @@ import com.jbnu.ideahub.comment.domain.Comment;
 import com.jbnu.ideahub.competition.domain.Competition;
 import com.jbnu.ideahub.notification.domain.NotificationMember;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Member {
 

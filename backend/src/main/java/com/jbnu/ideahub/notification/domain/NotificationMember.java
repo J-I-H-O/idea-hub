@@ -2,9 +2,12 @@ package com.jbnu.ideahub.notification.domain;
 
 import com.jbnu.ideahub.member.domain.Member;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class NotificationMember {
 

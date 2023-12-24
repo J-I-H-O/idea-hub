@@ -7,7 +7,7 @@ import com.jbnu.ideahub.member.dto.request.MemberCreateRequest;
 import com.jbnu.ideahub.member.dto.request.MemberUpdateRequest;
 import com.jbnu.ideahub.member.dto.response.MemberResponse;
 import com.jbnu.ideahub.member.presentation.MemberController;
-import com.jbnu.ideahub.member.service.MemberService;
+import com.jbnu.ideahub.member.application.MemberService;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

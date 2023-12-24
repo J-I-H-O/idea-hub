@@ -4,7 +4,7 @@ import com.jbnu.ideahub.common.dto.ApiResponse;
 import com.jbnu.ideahub.member.dto.request.MemberCreateRequest;
 import com.jbnu.ideahub.member.dto.request.MemberUpdateRequest;
 import com.jbnu.ideahub.member.dto.response.MemberResponse;
-import com.jbnu.ideahub.member.service.MemberService;
+import com.jbnu.ideahub.member.application.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

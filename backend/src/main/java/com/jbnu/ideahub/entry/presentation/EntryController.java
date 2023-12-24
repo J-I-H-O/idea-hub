@@ -4,14 +4,17 @@ import com.jbnu.ideahub.common.dto.ApiResponse;
 import com.jbnu.ideahub.entry.dto.request.EntryCreateRequest;
 import com.jbnu.ideahub.entry.dto.request.EntryUpdateRequest;
 import com.jbnu.ideahub.entry.dto.response.EntryResponse;
-import com.jbnu.ideahub.entry.service.EntryService;
+import com.jbnu.ideahub.entry.application.EntryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,16 +25,23 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Void> createEntry(
-            @RequestBody @Valid final EntryCreateRequest entryCreateRequest
+            @RequestBody @Valid final EntryCreateRequest request
     ) {
-        final Long entryId = entryService.save(entryCreateRequest);
+        final Long entryId = entryService.save(request.getCompetitionId(), request);
         return ResponseEntity.created(URI.create("/entries/" + entryId)).build();
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<EntryResponse>>> getEntries() {
-        List<EntryResponse> entryResponses = entryService.findAll();
-        return ResponseEntity.ok().body(new ApiResponse<>(entryResponses));
+    public ResponseEntity<ApiResponse<Page<EntryResponse>>> getEntries(
+            @PageableDefault(
+                    page = 0,
+                    size = 6,
+                    sort = "datetimeMetadata.createdAt",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable
+    ) {
+        Page<EntryResponse> response = entryService.findAll(pageable);
+        return ResponseEntity.ok().body(new ApiResponse<>(response));
     }
 
     @GetMapping("/{entryId}")
@@ -42,7 +52,7 @@ public class EntryController {
         return ResponseEntity.ok(new ApiResponse<>(entryResponse));
     }
 
-    @PatchMapping("/{entryId}")
+    @PutMapping("/{entryId}")
     public ResponseEntity<Void> updateEntry(
             @PathVariable final Long entryId,
             @RequestBody @Valid EntryUpdateRequest entryUpdateRequest

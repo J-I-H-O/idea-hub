@@ -8,7 +8,7 @@ import com.jbnu.ideahub.competition.dto.request.CompetitionCreateRequest;
 import com.jbnu.ideahub.competition.dto.request.CompetitionUpdateRequest;
 import com.jbnu.ideahub.competition.dto.response.CompetitionResponse;
 import com.jbnu.ideahub.competition.presentation.CompetitionController;
-import com.jbnu.ideahub.competition.service.CompetitionService;
+import com.jbnu.ideahub.competition.application.CompetitionService;
 import com.jbnu.ideahub.document.common.RestdocsTestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
