@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import { Link } from "react-router-dom";
-import mainImg from "../../images/main2.png";
+import mainImg from "../../images/main.png";
 
 const TitleSlideHolder = styled(Link)`
   width: 100%;

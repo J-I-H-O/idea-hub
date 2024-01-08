@@ -16,8 +16,12 @@ const EntryWriteActionButtons = ({ onCancel, onPublish, isEdit }) => {
     <WriteActionButtonsBlock>
       <Button
         onClick={onPublish}
-        toDefaultColor
-        style={{ width: "10rem", height: "3rem" }}
+        style={{
+          width: "10rem",
+          height: "3rem",
+          backgroundColor: "black",
+          color: "white",
+        }}
       >
         {isEdit ? "수정" : "등록"}
       </Button>
