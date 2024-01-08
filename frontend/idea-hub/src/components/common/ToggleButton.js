@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 //hamburger menu
 const ButtonBody = styled.button`
@@ -17,14 +17,14 @@ const ButtonBody = styled.button`
   .toggle-button__line {
     width: 30px;
     height: 2px;
-    background: white;
+    background: black;
   }
   @media (min-width: 1153px) {
     display: none;
   }
 `;
 
-const ToggleButton = props => (
+const ToggleButton = (props) => (
   <ButtonBody onClick={props.click}>
     <div className="toggle-button__line" />
     <div className="toggle-button__line" />

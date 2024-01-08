@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import Responsive from './Responsive';
-import Button from './Button';
-import { Link } from 'react-router-dom';
-import palette from '../../lib/styles/palette';
-import ToggleButton from './ToggleButton';
+import React from "react";
+import styled from "styled-components";
+import Responsive from "./Responsive";
+import Button from "./Button";
+import { Link } from "react-router-dom";
+import palette from "../../lib/styles/palette";
+import ToggleButton from "./ToggleButton";
 
 //기존 색 : #ff4e50
 const HeaderBlock = styled.div`
@@ -12,22 +12,22 @@ const HeaderBlock = styled.div`
   width: 100%;
   background: ${palette.mainColor};
   z-index: 100;
+  border-bottom: 1px solid ${palette.gray[2]};
 `;
 
 const Wrapper = styled(Responsive)`
   height: 4rem;
-  //children element를 가로로 배열
   display: flex;
   align-items: center;
   justify-content: space-between;
   .logo {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: white;
-    letter-spacing: 2px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    margin-right: 2rem;
   }
   .topMenu {
-    //children element를 가로로 배열
     display: flex;
     align-items: center;
     height: 100%;
@@ -48,48 +48,47 @@ const UserInfo = styled.div`
   padding-top: 1.3rem;
 `;
 
- //Header에 콘텐츠가 가려지지 않도록 삽입
+//Header에 콘텐츠가 가려지지 않도록 삽입
 const Spacer = styled.div`
   height: 2rem;
 `;
 
-// 헤더 로고, 네비게이터 리스트 불러오기 
+// 헤더 로고, 네비게이터 리스트 불러오기
 const Header = ({ user, onLogout, drawerClickHandler }) => {
   return (
     <>
       <HeaderBlock>
         <Wrapper>
-          <Link to="/" className="logo">
-            IDEA HUB
-          </Link>
-          <div style={{ display: 'flex', height: '100%' }}>
-            <Button
-              to="/postlist"
-              fullHeight
-              toDefaultColor
-              style={{paddingTop:'1.5rem'}}
-              className="innerComponents"
-            >
-              대회 목록
-            </Button>
-            <Button
-              to="/contentlist"
-              fullHeight
-              toDefaultColor
-              style={{paddingTop:'1.5rem'}}
-              className="innerComponents"
-            >
-              작품 정보
-            </Button>
+          <div className="topMenu">
+            <Link to="/" className="logo" style={{}}>
+              IDEA HUB
+            </Link>
+            <div className="topMenu">
+              <Button
+                to="/competitions"
+                style={{ textDecoration: "none" }}
+                className="innerComponents"
+              >
+                대회 목록
+              </Button>
+              <Button
+                to="/entries"
+                style={{ textDecoration: "none" }}
+                className="innerComponents"
+              >
+                작품 정보
+              </Button>
+            </div>
+          </div>
+          <div style={{ display: "flex" }}>
             {user ? (
               <div className="topMenu">
                 <UserInfo className="innerComponents">
-                  {user.username + ' 님'}
+                  {user.username + " 님"}
                 </UserInfo>
                 <Button
                   onClick={onLogout}
-                  fullHeight
-                  style={{ paddingTop: '1.5rem' }}
+                  style={{ paddingTop: "1.5rem", textDecoration: "none" }}
                   className="innerComponents"
                 >
                   로그아웃
@@ -98,20 +97,22 @@ const Header = ({ user, onLogout, drawerClickHandler }) => {
             ) : (
               <div className="topMenu">
                 <Button
-                  to="/register"
-                  fullHeight
-                  style={{ paddingTop: '1.5rem' }}
-                  className="innerComponents"
-                >
-                  회원가입
-                </Button>
-                <Button
                   to="/login"
                   fullHeight
-                  style={{ paddingTop: '1.5rem' }}
+                  hasBorder
+                  style={{ textDecoration: "none" }}
                   className="innerComponents"
                 >
                   로그인
+                </Button>
+                <Button
+                  to="/register"
+                  fullHeight
+                  blackBackground
+                  style={{ textDecoration: "none" }}
+                  className="innerComponents"
+                >
+                  회원가입
                 </Button>
               </div>
             )}
