@@ -7,12 +7,12 @@ const buttonStyle = css`
   border: none;
   font-family: "Montserrat", "Noto Sans KR", Sans-Serif;
   font-size: 16px;
-  font-weigt: bold;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   margin: 0.2rem;
   color: ${palette.gray[7]};
   outline: none;
   cursor: pointer;
+  text-decoration: none;
 
   &:disabled {
     background: ${palette.gray[3]};
@@ -48,12 +48,14 @@ const buttonStyle = css`
     ${(props) =>
     props.hasBorder &&
     css`
-      border: 1px solid ${palette.gray[3]};
+      font-size: 14px;
+      border: 1px solid ${palette.gray[4]};
     `}
 
     ${(props) =>
     props.blackBackground &&
     css`
+      font-size: 14px;
       background-color: black;
       color: white;
     `}

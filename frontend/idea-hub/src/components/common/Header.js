@@ -22,7 +22,7 @@ const Wrapper = styled(Responsive)`
   justify-content: space-between;
   .logo {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 1000;
     color: black;
     text-decoration: none;
     margin-right: 2rem;
@@ -64,18 +64,10 @@ const Header = ({ user, onLogout, drawerClickHandler }) => {
               IDEA HUB
             </Link>
             <div className="topMenu">
-              <Button
-                to="/competitions"
-                style={{ textDecoration: "none" }}
-                className="innerComponents"
-              >
+              <Button to="/competitions" className="innerComponents">
                 대회 목록
               </Button>
-              <Button
-                to="/entries"
-                style={{ textDecoration: "none" }}
-                className="innerComponents"
-              >
+              <Button to="/entries" className="innerComponents">
                 작품 정보
               </Button>
             </div>
@@ -86,30 +78,18 @@ const Header = ({ user, onLogout, drawerClickHandler }) => {
                 <UserInfo className="innerComponents">
                   {user.username + " 님"}
                 </UserInfo>
-                <Button
-                  onClick={onLogout}
-                  style={{ paddingTop: "1.5rem", textDecoration: "none" }}
-                  className="innerComponents"
-                >
+                <Button onClick={onLogout} className="innerComponents">
                   로그아웃
                 </Button>
               </div>
             ) : (
               <div className="topMenu">
-                <Button
-                  to="/login"
-                  fullHeight
-                  hasBorder
-                  style={{ textDecoration: "none" }}
-                  className="innerComponents"
-                >
+                <Button to="/login" hasBorder className="innerComponents">
                   로그인
                 </Button>
                 <Button
                   to="/register"
-                  fullHeight
                   blackBackground
-                  style={{ textDecoration: "none" }}
                   className="innerComponents"
                 >
                   회원가입
